@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ff89a4aa84fad3f48ae0de11153af052
+timeCreated: 1491024574
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 54604
+  packageName: '"Kawaii Tanks Project" Free version 2.0'
+  packageVersion: 2.0
+  assetPath: Assets/Kawaii_Tanks_Project (Free)/Prefabs/Tank_Components/Armor_Collider.prefab
+  uploadId: 498042

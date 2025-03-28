@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="64444ad5-389d-459d-bdc3-6cf8056fe1a3" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../Kawaii_Tanks_Project (Free).meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Editor/Track_Deform_CSEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Editor/Track_Deform_CSEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Editor/Track_Scroll_CSEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Editor/Track_Scroll_CSEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Bullet.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Bullet/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Bullet/Materials/Bullet_Base.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Bullet/Materials/Bullet_Base.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Bullet/Materials/Bullet_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Bullet/Materials/Bullet_Base.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Bullet/SD_Bullet.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Bullet/SD_Bullet.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Bridges.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Bridges/Bridges.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Bridges/Bridges.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Bridges/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Bridges/Materials/Bridges.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Bridges/Materials/Bridges.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Bridges/Materials/Bridges.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Bridges/Materials/Bridges.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Ground_Tile.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Ground_Tile.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/For_Grass.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/For_Grass.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/For_Sand.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/For_Sand.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/For_Stone.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/For_Stone.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/For_Water.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/For_Water.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/Tex_Grass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/Tex_Grass.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/Tex_Sand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/Tex_Sand.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/Tex_Wall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/Tex_Wall.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/Tex_Water.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Ground_Tile/Materials/Tex_Water.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Hedge.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Hedge/Hedge.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Hedge/Hedge.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Hedge/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Hedge/Materials/Hedge_Base.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Hedge/Materials/Hedge_Base.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Hedge/Materials/Hedge_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Hedge/Materials/Hedge_Base.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Hedge/Materials/Hedge_Base_AO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Hedge/Materials/Hedge_Base_AO.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/House_A.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/House_A.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Base.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Base.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Base.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Base_AO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Base_AO.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Low_Base.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Low_Base.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Low_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Low_Base.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Low_Base_AO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/House_A/Materials/House_A_Low_Base_AO.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Tree.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Tree/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Tree/Materials/Tree_Base.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Tree/Materials/Tree_Base.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Tree/Materials/Tree_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Tree/Materials/Tree_Base.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Tree/Materials/Tree_Base_AO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Tree/Materials/Tree_Base_AO.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Tree/Tree.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/Props/Tree/Tree.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Base.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Base.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Base.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Base_AO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Base_AO.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_TrackBelt.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_TrackBelt.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_TrackBelt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_TrackBelt.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_TrackBelt_AO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_TrackBelt_AO.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_TrackBelt_Bump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_TrackBelt_Bump.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_TrackBelt_Mobile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_TrackBelt_Mobile.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Wheel.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Wheel.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Wheel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Wheel.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Wheel_AO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/Materials/SD_Firefly_Wheel_AO.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/SD_Firefly.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Firefly/SD_Firefly.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Base.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Base.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Base.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Base_AO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Base_AO.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_TrackBelt.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_TrackBelt.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_TrackBelt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_TrackBelt.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_TrackBelt_AO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_TrackBelt_AO.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_TrackBelt_Bump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_TrackBelt_Bump.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_TrackBelt_Mobile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_TrackBelt_Mobile.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Wheel.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Wheel.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Wheel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Wheel.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Wheel_AO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/Materials/SD_Tiger-I_Wheel_AO.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/SD_Tiger-I.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Meshes/SD_Tiger-I/SD_Tiger-I.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/For_Collider.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/For_Collider.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Particle_Glow.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Particle_Glow.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Particle_Smoke.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Particle_Smoke.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Particle_Spark.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Particle_Spark.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Particle_Trail.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Particle_Trail.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/PhysicMat_Bullet.physicMaterial" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/PhysicMat_Bullet.physicMaterial.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/PhysicMat_Wheels.physicMaterial" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/PhysicMat_Wheels.physicMaterial.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/PhysicMat_Zero.physicMaterial" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/PhysicMat_Zero.physicMaterial.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/SE_Engine.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/SE_Engine.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/SE_Explosion.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/SE_Explosion.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/SE_Fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/SE_Fire.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/SE_Hit.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/SE_Hit.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Smoke_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Smoke_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Spark_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Spark_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Terrain.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Terrain/Terrain_Base.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Terrain/Terrain_Base.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Terrain/layer_Tex_Grass(15.000,15.000)(0.000,0.000)(0.000,0.000,0.000),0.000,0.000.terrainlayer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Terrain/layer_Tex_Grass(15.000,15.000)(0.000,0.000)(0.000,0.000,0.000),0.000,0.000.terrainlayer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Terrain/layer_Tex_Sand(15.000,15.000)(0.000,0.000)(0.000,0.000,0.000),0.000,0.000.terrainlayer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Terrain/layer_Tex_Sand(15.000,15.000)(0.000,0.000)(0.000,0.000,0.000),0.000,0.000.terrainlayer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Terrain/layer_Tex_Wall(15.000,15.000)(0.000,0.000)(0.000,0.000,0.000),0.000,0.000.terrainlayer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Terrain/layer_Tex_Wall(15.000,15.000)(0.000,0.000)(0.000,0.000,0.000),0.000,0.000.terrainlayer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Terrain/layer_Tex_Water(15.000,15.000)(0.000,0.000)(0.000,0.000,0.000),0.000,0.000.terrainlayer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Terrain/layer_Tex_Water(15.000,15.000)(0.000,0.000)(0.000,0.000,0.000),0.000,0.000.terrainlayer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Trail_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Trail_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/Bullet.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/Bullet.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/Bullet_Broken.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/Bullet_Broken.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/Destroyed_Effect.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/Destroyed_Effect.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/Hedge_Broken.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/Hedge_Broken.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/MuzzleFire.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/MuzzleFire.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/Tree_Broken.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Bullet_and_Effects/Tree_Broken.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Grass_Tile.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Grass_Tile.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Grass_Tile_1x3.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Grass_Tile_1x3.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Grass_Tile_3x3.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Grass_Tile_3x3.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Sand_Tile.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Sand_Tile.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Sand_Tile_1x3.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Sand_Tile_1x3.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Water_Tile.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Water_Tile.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Water_Tile_1x3.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Ground_Tile/Water_Tile_1x3.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_A.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_A.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_B.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_B.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_Base_A.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_Base_A.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_Base_B.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_Base_B.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_Base_C.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_Base_C.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_C.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Hedge_C.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/House_A.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/House_A.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/House_A_Low.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/House_A_Low.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Tree_A.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Tree_A.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Tree_B.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Props/Tree_B.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/SD_Firefly_2.0.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/SD_Firefly_2.0.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/SD_Tiger-I_2.0.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/SD_Tiger-I_2.0.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Scene_Components.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Scene_Components/Camera_Manager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Scene_Components/Camera_Manager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Scene_Components/Game_Controller.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Scene_Components/Game_Controller.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Scene_Components/Text_Damage.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Scene_Components/Text_Damage.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Scene_Components/Touch_Controls (Tutorial).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Scene_Components/Touch_Controls (Tutorial).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Scene_Components/Touch_Controls.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Scene_Components/Touch_Controls.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Tank_Components.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Tank_Components/Armor_Collider.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prefabs/Tank_Components/Armor_Collider.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ReadMe [Ver.2.0].meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ReadMe [Ver.2.0]/Online Manual (Ver.2.0).pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ReadMe [Ver.2.0]/Online Manual (Ver.2.0).pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ReadMe [Ver.2.0]/[01] How to Start (Ver.2.0).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ReadMe [Ver.2.0]/[01] How to Start (Ver.2.0).txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scenes/Test_Field.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scenes/Test_Field.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scenes/Town.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scenes/Town.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AimMarker_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AimMarker_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aiming_Control_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aiming_Control_Scripts/Aiming_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aiming_Control_Scripts/Aiming_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aiming_Control_Scripts/Aiming_Control_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aiming_Control_Scripts/Aiming_Control_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aiming_Control_Scripts/Aiming_Control_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aiming_Control_Scripts/Aiming_Control_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aiming_Control_Scripts/Aiming_Control_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aiming_Control_Scripts/Aiming_Control_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Armor_Collider_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Armor_Collider_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Barrel_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Barrel_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Break_Object_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Break_Object_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bullet_Nav_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bullet_Nav_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Avoid_Obstacle_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Avoid_Obstacle_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Manager_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Manager_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Rotate_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Rotate_Scripts/Camera_Rotate_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Rotate_Scripts/Camera_Rotate_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Rotate_Scripts/Camera_Rotate_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Rotate_Scripts/Camera_Rotate_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Rotate_Scripts/Camera_Rotate_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Rotate_Scripts/Camera_Rotate_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Rotate_Scripts/Camera_Rotate_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Rotate_Scripts/Camera_Rotate_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Rotate_Scripts/Camera_Rotate_Input_88_Demo_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Rotate_Scripts/Camera_Rotate_Input_88_Demo_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Zoom_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Zoom_Scripts/Camera_Zoom_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Zoom_Scripts/Camera_Zoom_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Zoom_Scripts/Camera_Zoom_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Zoom_Scripts/Camera_Zoom_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Zoom_Scripts/Camera_Zoom_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Zoom_Scripts/Camera_Zoom_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Zoom_Scripts/Camera_Zoom_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Camera_Zoom_Scripts/Camera_Zoom_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cannon_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cannon_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Damage_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Damage_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Damage_Display_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Damage_Display_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Delete_Timer_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Delete_Timer_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Extra_Collider_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Extra_Collider_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fire_Control_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fire_Control_Scripts/Fire_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fire_Control_Scripts/Fire_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fire_Control_Scripts/Fire_Control_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fire_Control_Scripts/Fire_Control_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fire_Control_Scripts/Fire_Control_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fire_Control_Scripts/Fire_Control_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fire_Control_Scripts/Fire_Control_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fire_Control_Scripts/Fire_Control_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fire_Spawn_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fire_Spawn_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game_Controller_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game_Controller_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../General_Settings_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../General_Settings_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GunCamera_Control_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GunCamera_Control_Scripts/GunCamera_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GunCamera_Control_Scripts/GunCamera_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GunCamera_Control_Scripts/GunCamera_Control_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GunCamera_Control_Scripts/GunCamera_Control_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GunCamera_Control_Scripts/GunCamera_Control_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GunCamera_Control_Scripts/GunCamera_Control_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GunCamera_Control_Scripts/GunCamera_Control_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GunCamera_Control_Scripts/GunCamera_Control_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ID_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ID_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Key_Bindings_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Key_Bindings_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Layer_Settings_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Layer_Settings_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MainBody_Settings_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MainBody_Settings_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SE_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SE_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Touch_Pad_Event_Listener_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Touch_Pad_Event_Listener_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Track_Deform_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Track_Deform_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Track_Scroll_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Track_Scroll_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Turret_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Turret_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Turret_Finishing_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Turret_Finishing_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Wheel_Control_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wheel_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wheel_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wheel_Control_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wheel_Control_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wheel_Control_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wheel_Control_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wheel_Control_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wheel_Control_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Wheel_Rotate_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Wheel_Rotate_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Wheel_Sync_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Wheel_Sync_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Sprite_Aim_Marker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Sprite_Aim_Marker.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Sprite_Background_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Sprite_Background_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Sprite_Button_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Sprite_Button_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Sprite_Pos_Marker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Sprite_Pos_Marker.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Sprite_Reticle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sprites/Sprite_Reticle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/AudioManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/AudioManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/InputManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/Physics2DSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ProjectSettings/TimeManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ProjectSettings/TimeManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/AssetRaw/UI/BattleMainUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../UnityProject/Assets/AssetRaw/UI/BattleMainUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Editor/ToolbarExtender/Custom/SceneSwitcher/Editor/SceneSwitcher.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Editor/ToolbarExtender/Custom/SceneSwitcher/Editor/SceneSwitcher.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/GameScripts/HotFix/GameLogic/Module/UIModule/UIBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../UnityProject/Assets/GameScripts/HotFix/GameLogic/Module/UIModule/UIBase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/GameScripts/HotFix/GameLogic/Module/UIModule/UIWidget.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../UnityProject/Assets/GameScripts/HotFix/GameLogic/Module/UIModule/UIWidget.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/GameScripts/HotFix/GameLogic/Module/UIModule/UIWindow.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../UnityProject/Assets/GameScripts/HotFix/GameLogic/Module/UIModule/UIWindow.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/GameScripts/HotFix/GameLogic/Module/UIModule/WindowAttribute.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../UnityProject/Assets/GameScripts/HotFix/GameLogic/Module/UIModule/WindowAttribute.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Editor/Track_Deform_CSEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Editor/Track_Deform_CSEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Editor/Track_Scroll_CSEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Editor/Track_Scroll_CSEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/AimMarker_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/AimMarker_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Aiming_Control_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Aiming_Control_Scripts/Aiming_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Aiming_Control_Scripts/Aiming_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Aiming_Control_Scripts/Aiming_Control_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Aiming_Control_Scripts/Aiming_Control_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Aiming_Control_Scripts/Aiming_Control_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Aiming_Control_Scripts/Aiming_Control_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Aiming_Control_Scripts/Aiming_Control_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Aiming_Control_Scripts/Aiming_Control_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Armor_Collider_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Armor_Collider_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Barrel_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Barrel_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Break_Object_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Break_Object_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Bullet_Nav_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Bullet_Nav_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Avoid_Obstacle_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Avoid_Obstacle_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Manager_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Manager_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Rotate_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Rotate_Scripts/Camera_Rotate_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Rotate_Scripts/Camera_Rotate_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Rotate_Scripts/Camera_Rotate_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Rotate_Scripts/Camera_Rotate_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Rotate_Scripts/Camera_Rotate_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Rotate_Scripts/Camera_Rotate_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Rotate_Scripts/Camera_Rotate_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Rotate_Scripts/Camera_Rotate_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Rotate_Scripts/Camera_Rotate_Input_88_Demo_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Rotate_Scripts/Camera_Rotate_Input_88_Demo_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Zoom_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Zoom_Scripts/Camera_Zoom_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Zoom_Scripts/Camera_Zoom_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Zoom_Scripts/Camera_Zoom_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Zoom_Scripts/Camera_Zoom_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Zoom_Scripts/Camera_Zoom_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Zoom_Scripts/Camera_Zoom_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Zoom_Scripts/Camera_Zoom_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Camera_Zoom_Scripts/Camera_Zoom_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Cannon_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Cannon_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Damage_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Damage_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Damage_Display_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Damage_Display_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Delete_Timer_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Delete_Timer_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Extra_Collider_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Extra_Collider_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Fire_Control_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Fire_Control_Scripts/Fire_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Fire_Control_Scripts/Fire_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Fire_Control_Scripts/Fire_Control_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Fire_Control_Scripts/Fire_Control_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Fire_Control_Scripts/Fire_Control_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Fire_Control_Scripts/Fire_Control_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Fire_Control_Scripts/Fire_Control_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Fire_Control_Scripts/Fire_Control_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Fire_Spawn_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Fire_Spawn_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Game_Controller_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Game_Controller_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/General_Settings_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/General_Settings_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/GunCamera_Control_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/GunCamera_Control_Scripts/GunCamera_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/GunCamera_Control_Scripts/GunCamera_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/GunCamera_Control_Scripts/GunCamera_Control_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/GunCamera_Control_Scripts/GunCamera_Control_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/GunCamera_Control_Scripts/GunCamera_Control_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/GunCamera_Control_Scripts/GunCamera_Control_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/GunCamera_Control_Scripts/GunCamera_Control_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/GunCamera_Control_Scripts/GunCamera_Control_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/ID_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/ID_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Key_Bindings_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Key_Bindings_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Layer_Settings_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Layer_Settings_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/MainBody_Settings_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/MainBody_Settings_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/SE_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/SE_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Touch_Pad_Event_Listener_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Touch_Pad_Event_Listener_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Track_Deform_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Track_Deform_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Track_Scroll_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Track_Scroll_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Turret_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Turret_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Turret_Finishing_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Turret_Finishing_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Control_Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Control_Scripts/Wheel_Control_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Control_Scripts/Wheel_Control_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Control_Scripts/Wheel_Control_Input_00_Base_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Control_Scripts/Wheel_Control_Input_00_Base_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Control_Scripts/Wheel_Control_Input_01_Desktop_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Control_Scripts/Wheel_Control_Input_01_Desktop_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Control_Scripts/Wheel_Control_Input_02_Mobile_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Control_Scripts/Wheel_Control_Input_02_Mobile_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Rotate_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Rotate_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Sync_CS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Assets/Kawaii_Tanks_Project (Free)/Scripts/Wheel_Sync_CS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../UnityProject/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../UnityProject/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../UnityProject/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../UnityProject/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../UnityProject/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../UnityProject/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2urDIuQ2OPzh4FdNS4ROQMaSH9T" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "TE__Demo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="64444ad5-389d-459d-bdc3-6cf8056fe1a3" name="更改" comment="" />
+      <created>1742997724947</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742997724947</updated>
+      <workItem from="1742997731554" duration="1208000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

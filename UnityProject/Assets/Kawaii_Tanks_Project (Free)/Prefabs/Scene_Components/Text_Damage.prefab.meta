@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 14e15a8878973664593b9aa0db462273
+timeCreated: 1489977613
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 54604
+  packageName: '"Kawaii Tanks Project" Free version 2.0'
+  packageVersion: 2.0
+  assetPath: Assets/Kawaii_Tanks_Project (Free)/Prefabs/Scene_Components/Text_Damage.prefab
+  uploadId: 498042

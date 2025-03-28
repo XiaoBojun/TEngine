@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 65091ea4068294a438d8ae00f68e1e2d
+timeCreated: 1487813434
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 54604
+  packageName: '"Kawaii Tanks Project" Free version 2.0'
+  packageVersion: 2.0
+  assetPath: Assets/Kawaii_Tanks_Project (Free)/Prefabs/Ground_Tile/Water_Tile.prefab
+  uploadId: 498042

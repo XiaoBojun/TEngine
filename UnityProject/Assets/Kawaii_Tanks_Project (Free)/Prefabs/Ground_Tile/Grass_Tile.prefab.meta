@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3d8ff0b073bc8664e93005a91c27d47a
+timeCreated: 1487597285
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 54604
+  packageName: '"Kawaii Tanks Project" Free version 2.0'
+  packageVersion: 2.0
+  assetPath: Assets/Kawaii_Tanks_Project (Free)/Prefabs/Ground_Tile/Grass_Tile.prefab
+  uploadId: 498042

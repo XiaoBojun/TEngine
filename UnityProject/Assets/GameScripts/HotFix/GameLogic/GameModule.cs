@@ -84,6 +84,13 @@ public class GameModule
     public static ILocalizationModule Localization => _localization ??= Get<ILocalizationModule>();
     
     private static ILocalizationModule _localization;
+    
+    /// <summary>
+    /// 获取本地化模块。
+    /// </summary>
+    //public static IEntityManager Entity => _Entity ??= Get<IEntityManager>();
+    
+    private static IEntityManager _Entity;
     #endregion
     
     /// <summary>
@@ -114,5 +121,6 @@ public class GameModule
         _scene = null;
         _timer = null;
         _localization = null;
+        _Entity = null;
     }
 }

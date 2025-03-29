@@ -120,8 +120,8 @@ namespace Procedure
                 }
                 else
                 {
-                    Log.Error(LoadText.Instance.Label_Net_UnReachable);
-                    LauncherMgr.ShowMessageBox(LoadText.Instance.Label_Net_UnReachable, MessageShowType.TwoButton,
+                    Log.Error(message);
+                    LauncherMgr.ShowMessageBox($"获取远程版本失败！点击确认重试\n <color=#FF0000>{message}</color>", MessageShowType.TwoButton,
                         LoadStyle.StyleEnum.Style_Retry,
                         Application.Quit);
                     return;

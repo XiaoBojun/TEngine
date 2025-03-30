@@ -26,7 +26,6 @@ namespace GameLogic
         {
             newGame = true;
             GameModule.Scene.LoadScene("Game", UnityEngine.SceneManagement.LoadSceneMode.Single,false,100,OnToSceneSuccess);
-            
             Close();
         }
 

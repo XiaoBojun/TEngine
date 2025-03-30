@@ -307,7 +307,7 @@
       <HintPath>D:\Unity\2021.3.45f1c1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>E:\UnityFramework\TEngine\0\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
+      <HintPath>E:\UnityFramework\TE_Demo\0\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:\Unity\2021.3.45f1c1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -688,34 +688,34 @@
       <HintPath>D:\Unity\2021.3.45f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>E:\UnityFramework\TEngine\0\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>E:\UnityFramework\TE_Demo\0\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:\UnityFramework\TEngine\0\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:\UnityFramework\TE_Demo\0\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>E:\UnityFramework\TEngine\0\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <HintPath>E:\UnityFramework\TE_Demo\0\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Sysroot.Linux_x86_64">
-      <HintPath>E:\UnityFramework\TEngine\0\Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
+      <HintPath>E:\UnityFramework\TE_Demo\0\Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
-      <HintPath>E:\UnityFramework\TEngine\0\Library\ScriptAssemblies\Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
+      <HintPath>E:\UnityFramework\TE_Demo\0\Library\ScriptAssemblies\Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:\UnityFramework\TEngine\0\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:\UnityFramework\TE_Demo\0\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>E:\UnityFramework\TEngine\0\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <HintPath>E:\UnityFramework\TE_Demo\0\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>E:\UnityFramework\TEngine\0\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <HintPath>E:\UnityFramework\TE_Demo\0\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:\UnityFramework\TEngine\0\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>E:\UnityFramework\TE_Demo\0\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.SysrootPackage.Editor">
-      <HintPath>E:\UnityFramework\TEngine\0\Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
+      <HintPath>E:\UnityFramework\TE_Demo\0\Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

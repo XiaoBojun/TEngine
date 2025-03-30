@@ -70,8 +70,8 @@ public class GameManager : MonoBehaviour {
 
 			playerData.Reset (); //reset PlayerData and load the game from it
 		}
-		// else if (Application.i) //if it's not a new game, we need to check which platform we are on. If using web player, we load game from playprefs.
-		// 	playerData = PlayerData.LoadForWeb ();
+		 //else if (Application.w) //if it's not a new game, we need to check which platform we are on. If using web player, we load game from playprefs.
+		 	//playerData = PlayerData.LoadForWeb ();
 		else //on other platform, we load from the saved xml file
 			playerData = PlayerData.Load ();
 	}

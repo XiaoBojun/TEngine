@@ -24,38 +24,13 @@ namespace GameLogic
 		//public SkillTextInfo damageText;
 		//public SkillTextInfo speedText;
 
-		//[HideInInspector]
-		//public ActiveSkill activeSkill; //reference to the current using active skill
+		// [HideInInspector]
+		// public ActiveSkill activeSkill; //reference to the current using active skill
+		//
+		// [HideInInspector]
+		// public ActiveSkill selectedActiveSkill; //used when you select a skill in active skill selecting window
 
-		//[HideInInspector]
-		//public ActiveSkill selectedActiveSkill; //used when you select a skill in active skill selecting window
-
-		private int money; //money you have
-
-		public int Money
-		{
-			get { return money; }
-			set
-			{
-				money = value;
-
-				//HUD.Instance.moneyText.text = "Money: " + money.ToString(); //when change the value of money, update the text
-			}
-		}
-
-		void Awake()
-		{
-			if (instance == null)
-			{
-				instance = this;
-			}
-			else
-			{
-				if (this != instance)
-					Destroy(this.gameObject);
-			}
-		}
-
+		
 		void Start()
 		{
 			// foreach (ActiveSkill activeSkill in GameManager.Instance.activeSkills) //load the activeSkill which has the saved ID

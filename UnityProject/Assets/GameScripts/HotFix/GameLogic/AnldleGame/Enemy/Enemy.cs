@@ -48,7 +48,7 @@ namespace GameLogic
 
                 canvas.SetActive(false); //hide the canvas
 
-                PlayerStats.Instance.Money += loot; //give the player the reward
+                //PlayerStats.Instance.Money += loot; //give the player the reward
 
                 //GameManager.Instance.aliveEnemies.Remove(enemyID); //remove this enmey from the enemy list
             }

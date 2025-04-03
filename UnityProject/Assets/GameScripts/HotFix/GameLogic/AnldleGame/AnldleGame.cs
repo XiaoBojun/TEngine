@@ -1,24 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace GameLogic
 {
-    public class AnldleGame:SingletonBehaviour<AnldleGame>
+    public class AnldleGame : SingletonBehaviour<AnldleGame>
     {
-        public List<GameObject>  floorTiles;
+        public List<GameObject> floorTiles;
         public List<GameObject> wallTiles;
         private Transform thisTransform;
-        
+
+        private Player _player;
+
         public void OnEnterGame()
         {
             CreateEnv();
-            CreatePlayer();
+            CreatePlayer().Forget();
         }
 
-        private void CreatePlayer()
+        private async UniTask CreatePlayer()
         {
-            
+            var go = await GameModule.Resource.LoadAssetAsync<GameObject>("Player");
+            _player = go.GetComponent<Player>();
         }
 
 
@@ -31,207 +35,221 @@ namespace GameLogic
             {
                 floorTiles.Add(GameModule.Resource.LoadAsset<GameObject>("Dungeon_Floor_" + i));
             }
+
             for (int i = 1; i <= 4; i++)
             {
                 wallTiles.Add(GameModule.Resource.LoadAsset<GameObject>("wall" + i));
             }
-           
+
 
             for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < 4; j++) 
+                for (int j = 0; j < 4; j++)
                 {
                     GameObject instance;
 
                     if (j == 3) //instantiate wall tiles on the top row
-                        instance = Instantiate (wallTiles[Random.Range(0, wallTiles.Count)]);
+                        instance = Instantiate(wallTiles[Random.Range(0, wallTiles.Count)]);
                     else //instantiate floor tiles in other rows
-                        instance = Instantiate (floorTiles[Random.Range(0, floorTiles.Count)]);
+                        instance = Instantiate(floorTiles[Random.Range(0, floorTiles.Count)]);
 
-                    instance.transform.SetParent (thisTransform);
+                    instance.transform.SetParent(thisTransform);
 
-                    instance.transform.localPosition = new Vector3 (i * 64f, j * 64f, 0f); //set the position of each tile, which is 32 unit by 32 unit large
+                    instance.transform.localPosition = new Vector3(i * 64f, j * 64f, 0f); //set the position of each tile, which is 32 unit by 32 unit large
                 }
             }
         }
-        
-        	public GameObject[] monsterPrefabs; //a list of monster prefabs
-	public Enemy enemyPrefab; //the enemy prefab
-	public Transform Enemies; //the parent object of enemy
-	public int timeLimit= 30; //the time limit of each round
-	public Player player; //reference to the Player script
-	public float nextRoundDelay=2; //seconds delay before starting next round
-	
-	[HideInInspector] public List<Enemy> enemies; //a list of enemy scripts
-	[HideInInspector] public List<int> aliveEnemies; //a list of alive enmeies
-	[HideInInspector] public bool isBattling;
-	//[HideInInspector] public ActiveSkill[] activeSkills; //the current using active skill
-	//[HideInInspector] public PlayerData playerData; //the selected active skill in active skill selecting window
 
-	private int level; //the monster level
-	private int countdown; //the number shows on top-left
+        public GameObject[] monsterPrefabs; //a list of monster prefabs
+        public Enemy enemyPrefab; //the enemy prefab
+        public Transform Enemies; //the parent object of enemy
+        public int timeLimit = 30; //the time limit of each round
+        public Player player; //reference to the Player script
+        public float nextRoundDelay = 2; //seconds delay before starting next round
+
+        [HideInInspector]
+        public List<Enemy> enemies; //a list of enemy scripts
+
+        [HideInInspector]
+        public List<int> aliveEnemies; //a list of alive enmeies
+
+        [HideInInspector]
+        public bool isBattling;
+        [HideInInspector] public ActiveSkill[] activeSkills; //the current using active skill
+        [HideInInspector] public PlayerData playerData; //the selected active skill in active skill selecting window
+
+        private int level; //the monster level
+        private int countdown; //the number shows on top-left
 
 
-	public int Level
-	{
-		get
-		{
-			return level;
-		}
-		set
-		{
-			level = value;
+        public int Level
+        {
+            get { return level; }
+            set
+            {
+                level = value;
 
-			//HUD.Instance.levelText.text = "Enemy Level: " + level.ToString (); //update the Level text on bottom-right
-		}
-	}
+                //HUD.Instance.levelText.text = "Enemy Level: " + level.ToString (); //update the Level text on bottom-right
+            }
+        }
+        private int money; //money you have
 
-	void Awake ()
-	{
-		// if (instance == null)
-		// {
-		// 	instance = this;
-		// }
-		// else
-		// {
-		// 	if (this != instance)
-		// 		Destroy (this.gameObject);
-		// }
+        public int Money
+        {
+            get { return money; }
+            set
+            {
+                money = value;
 
-		//activeSkills = GameObject.Find ("HUD/AbilityWindow/Abilities").GetComponentsInChildren<ActiveSkill> (); //get the list of ActiveSkill scripts
+                //HUD.Instance.moneyText.text = "Money: " + money.ToString(); //when change the value of money, update the text
+            }
+        }
+        void Awake()
+        {
+            // if (instance == null)
+            // {
+            // 	instance = this;
+            // }
+            // else
+            // {
+            // 	if (this != instance)
+            // 		Destroy (this.gameObject);
+            // }
 
-		// if (Menu.newGame) //if it's a new game we get a new instance of PlayerData
-		// { 
-		// 	playerData = new PlayerData ();
-		//
-		// 	playerData.Reset (); //reset PlayerData and load the game from it
-		// }
-		// // else if (Application.i) //if it's not a new game, we need to check which platform we are on. If using web player, we load game from playprefs.
-		// // 	playerData = PlayerData.LoadForWeb ();
-		// else //on other platform, we load from the saved xml file
-		// 	playerData = PlayerData.Load ();
-	}
+            //activeSkills = GameObject.Find ("HUD/AbilityWindow/Abilities").GetComponentsInChildren<ActiveSkill> (); //get the list of ActiveSkill scripts
 
-	void Start ()
-	{
-		enemies = new List<Enemy> ();
+            // if (Menu.newGame) //if it's a new game we get a new instance of PlayerData
+            // { 
+            // 	playerData = new PlayerData ();
+            //
+            // 	playerData.Reset (); //reset PlayerData and load the game from it
+            // }
+            // // else if (Application.i) //if it's not a new game, we need to check which platform we are on. If using web player, we load game from playprefs.
+            // // 	playerData = PlayerData.LoadForWeb ();
+            // else //on other platform, we load from the saved xml file
+            // 	playerData = PlayerData.Load ();
+        }
 
-		for (int i = 0; i<3; i++) //create 3*3 enemy prefabs
-		{
-			for (int j=0; j<3; j++)
-			{
-				Enemy enemy = (Enemy)Instantiate (enemyPrefab);
+        void Start()
+        {
+            enemies = new List<Enemy>();
 
-				enemies.Add(enemy);
+            for (int i = 0; i < 3; i++) //create 3*3 enemy prefabs
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Enemy enemy = (Enemy)Instantiate(enemyPrefab);
 
-				enemy.transform.SetParent (Enemies);
+                    enemies.Add(enemy);
 
-				enemy.transform.localPosition = new Vector2 (i * 50, j * 50);
+                    enemy.transform.SetParent(Enemies);
 
-				enemy.transform.name = "Monster (" + i + ", " + j + ") ";
+                    enemy.transform.localPosition = new Vector2(i * 50, j * 50);
 
-				enemy.enemyID = i * 3 + j;
-			}
-		}
+                    enemy.transform.name = "Monster (" + i + ", " + j + ") ";
 
-		//Level = playerData.level; //load the level
+                    enemy.enemyID = i * 3 + j;
+                }
+            }
 
-		StartBattle (); //when everything is ready, start the fight
-	}
+            //Level = playerData.level; //load the level
 
-	private void StartBattle ()
-	{
-		SpawnEnemies ();
+            StartBattle(); //when everything is ready, start the fight
+        }
 
-		isBattling = true;
+        private void StartBattle()
+        {
+            SpawnEnemies();
 
-		StartCoroutine ("StartCountDown"); //start the time limit count down
+            isBattling = true;
 
-		player.StartAttack ();
-	}
+            StartCoroutine("StartCountDown"); //start the time limit count down
 
-	public void StopBattle (bool currentLevelCompleted = false)
-	{
-		player.StopAttack ();
+            player.StartAttack();
+        }
 
-		StopCoroutine ("StartCountDown");
+        public void StopBattle(bool currentLevelCompleted = false)
+        {
+            player.StopAttack();
 
-		isBattling = false;
+            StopCoroutine("StartCountDown");
 
-		if (currentLevelCompleted) //if the battle is stopped because all enemies have been killed, we increase the monster level by 1 and check if there is any new skills to unlock
-		{
-			Level++;
+            isBattling = false;
 
-			UnlockSkillCheck (); //unlock new skills if reaching a required level
-		}
+            if (currentLevelCompleted) //if the battle is stopped because all enemies have been killed, we increase the monster level by 1 and check if there is any new skills to unlock
+            {
+                Level++;
 
-		//everytime we finish a round, automatically save the game
-		// if (Application.isWebPlayer) //save method for web player
-		// 	playerData.SaveForWeb ();
-		//else
-			//playerData.Save ();
+                UnlockSkillCheck(); //unlock new skills if reaching a required level
+            }
 
-		aliveEnemies.Clear (); //remove everything in the alive enemy list
-		
-		Invoke ("StartBattle", nextRoundDelay); //start a new battle after seconds delay
-	}
-	
-	private IEnumerator StartCountDown ()
-	{
-		//HUD.Instance.countDownText.text = timeLimit.ToString ();
+            //everytime we finish a round, automatically save the game
+            // if (Application.isWebPlayer) //save method for web player
+            // 	playerData.SaveForWeb ();
+            //else
+            //playerData.Save ();
 
-		countdown = timeLimit;
+            aliveEnemies.Clear(); //remove everything in the alive enemy list
 
-		while (countdown > 0 && isBattling)
-		{
-			yield return new WaitForSeconds (1f); //run the loop per second
+            Invoke("StartBattle", nextRoundDelay); //start a new battle after seconds delay
+        }
 
-			countdown--; 
+        private IEnumerator StartCountDown()
+        {
+            //HUD.Instance.countDownText.text = timeLimit.ToString ();
 
-			//HUD.Instance.countDownText.text = countdown.ToString ();
-		}
+            countdown = timeLimit;
 
-		StopBattle (); //stop the battle if running out of time
+            while (countdown > 0 && isBattling)
+            {
+                yield return new WaitForSeconds(1f); //run the loop per second
 
-		Debug.Log ("time out");
-	}
+                countdown--;
 
-	private void SpawnEnemies ()
-	{
-		int i = 0;
+                //HUD.Instance.countDownText.text = countdown.ToString ();
+            }
 
-		foreach (Enemy enemy in enemies)
-		{
-			enemy.SpawnMonster (level);
+            StopBattle(); //stop the battle if running out of time
 
-			aliveEnemies.Add (i++);
-		}
-	}
+            Debug.Log("time out");
+        }
 
-	private void UnlockSkillCheck () //check if there is a new skill can be unlocked
-	{
-		bool newSkill = false;
+        private void SpawnEnemies()
+        {
+            int i = 0;
 
-		// foreach (ActiveSkill activeSkill in activeSkills)
-		// {
-		// 	if (level == activeSkill.unlockLevel) //unlock the skill if we beat the required level
-		// 	{
-		// 		activeSkill.Unlock ();
-		//
-		// 		newSkill = true; //set to true if a new skill unlocked
-		// 	}
-		// }
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.SpawnMonster(level);
 
-		if (newSkill) //if a new skill gets unlocked, we start the coroutine and remind the player a new skill has been unlocked
-			ActivatedSkill.Instance.StartNewSkillAlarm ();
-	}
+                aliveEnemies.Add(i++);
+            }
+        }
 
-	public void Save () //if you want to make a button and save the game manually, set the click event to this function
-	{
-		// if (Application.isWebPlayer)
-		// 	playerData.SaveForWeb ();
-		//else
-			//playerData.Save ();
-	}
+        private void UnlockSkillCheck() //check if there is a new skill can be unlocked
+        {
+            bool newSkill = false;
+
+            // foreach (ActiveSkill activeSkill in activeSkills)
+            // {
+            // 	if (level == activeSkill.unlockLevel) //unlock the skill if we beat the required level
+            // 	{
+            // 		activeSkill.Unlock ();
+            //
+            // 		newSkill = true; //set to true if a new skill unlocked
+            // 	}
+            // }
+
+            if (newSkill) //if a new skill gets unlocked, we start the coroutine and remind the player a new skill has been unlocked
+                ActivatedSkill.Instance.StartNewSkillAlarm();
+        }
+
+        public void Save() //if you want to make a button and save the game manually, set the click event to this function
+        {
+            // if (Application.isWebPlayer)
+            // 	playerData.SaveForWeb ();
+            //else
+            //playerData.Save ();
+        }
     }
 }

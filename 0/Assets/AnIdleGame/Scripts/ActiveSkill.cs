@@ -5,24 +5,43 @@ using System.Collections;
 //script for each active skill
 public class ActiveSkill : MonoBehaviour {
 
-	public int ID; //the ID of the active skill
-	public int baseAttackDamage; //the initial damage of the skill
-	public float baseAttackInterval; //the initial cooldown period 
-	public int numberOfTargets; //how many targets the skill can attack each time
-	public Sprite skillIcon; //skill icon sprite
-	public bool isStartingSkill; //if it's a starting skill
-	public int unlockLevel; //monster level required to unlock the skill
-	public string description; //the description of the skill, 
-	public Text textPopup; //the popup text to show the description
+	// public int ID; //the ID of the active skill
+	// public int baseAttackDamage; //the initial damage of the skill
+	// public float baseAttackInterval; //the initial cooldown period 
+	// public int numberOfTargets; //how many targets the skill can attack each time
+	// public Sprite skillIcon; //skill icon sprite
+	// public bool isStartingSkill; //if it's a starting skill
+	// public int unlockLevel; //monster level required to unlock the skill
+	// public string description; //the description of the skill, 
+	// public Text textPopup; //the popup text to show the description
+	//
+	// private Image skillImage; //the image to show the skill icon
+	// private int damageLevel;
+	// private int damageUpgradeCost; //the amount of money needed to upgrade
+	// private int attackDamage; //the current damage calculated based on damage level
+	// private float attackInterval; //the current cooldown period calculated based on speed level
+	// private int speedLevel;
+	// private int speedUpgradeCost; //the amount of money needed to upgrade
+	// private bool unlocked = false; //skill cannot be used until unlocked
 
-	private Image skillImage; //the image to show the skill icon
-	private int damageLevel;
-	private int damageUpgradeCost; //the amount of money needed to upgrade
-	private int attackDamage; //the current damage calculated based on damage level
-	private float attackInterval; //the current cooldown period calculated based on speed level
-	private int speedLevel;
-	private int speedUpgradeCost; //the amount of money needed to upgrade
-	private bool unlocked = false; //skill cannot be used until unlocked
+	public int ID; // 技能的唯一标识符
+	public int baseAttackDamage; // 技能的基础伤害值
+	public float baseAttackInterval; // 技能的基础冷却时间
+	public int numberOfTargets; // 技能每次可以攻击的目标数量
+	public Sprite skillIcon; // 技能图标的精灵
+	public bool isStartingSkill; // 标记该技能是否为起始技能
+	public int unlockLevel; // 解锁该技能所需的怪物等级
+	public string description; // 技能的描述信息
+	public Text textPopup; // 用于显示技能描述的弹出文本
+
+	private Image skillImage; // 用于展示技能图标的图像组件
+	private int damageLevel; // 技能伤害等级
+	private int damageUpgradeCost; // 提升伤害等级所需的费用
+	private int attackDamage; // 当前基于伤害等级计算的攻击伤害
+	private float attackInterval; // 当前基于速度等级计算的冷却时间
+	private int speedLevel; // 技能速度等级
+	private int speedUpgradeCost; // 提升速度等级所需的费用
+	private bool unlocked = false; // 技能解锁状态，未解锁时无法使用
 
 	void Awake ()
 	{

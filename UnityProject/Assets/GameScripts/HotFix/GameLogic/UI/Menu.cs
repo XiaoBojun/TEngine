@@ -1,6 +1,9 @@
+using System.Linq;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using TEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 namespace GameLogic
@@ -25,15 +28,24 @@ namespace GameLogic
         private void OnClickNewGameBtn()
         {
             newGame = true;
-            GameModule.Scene.LoadScene("Game", UnityEngine.SceneManagement.LoadSceneMode.Single,false,100,OnToSceneSuccess);
-            Close();
+            EnterGameScene().Forget();
         }
 
-        private void OnToSceneSuccess(Scene scene)
+        private async UniTaskVoid EnterGameScene()
         {
-            AnldleGame.Instance.OnEnterGame();
+            var scene = await  GameModule.Scene.LoadSceneAsync("Game");
+            if (scene.isLoaded)
+            {
+                AnldleGame.Instance.OnEnterGame();
+                
+                var camera = Camera.main;
+                 UniversalAdditionalCameraData baseCameraData = camera.GetUniversalAdditionalCameraData();
+                baseCameraData.cameraStack.Add(GameModule.UI.UICamera);
+                
+                Close();
+            }
         }
-
+        
         private void OnClickContinueBtn()
         {
             newGame = false;

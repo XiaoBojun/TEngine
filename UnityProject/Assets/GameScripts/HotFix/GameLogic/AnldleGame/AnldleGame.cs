@@ -11,18 +11,65 @@ namespace GameLogic
         public List<GameObject> wallTiles;
         private Transform thisTransform;
 
-        private Player _player;
+        //主角
+        public Player player; //reference to the Player script
 
-        public void OnEnterGame()
+        //敌人
+        public List<GameObject> monsterPrefabs;
+        public Enemy enemyPrefab; //the enemy prefab
+        public Transform Enemies; //the parent object of enemy
+
+        public async void OnEnterGame()
         {
             CreateEnv();
-            CreatePlayer().Forget();
+            await CreatePlayer();
+            await CreateEnemy();
+            GameModule.UI.ShowUI<UI_AbilityWindow>();
+        }
+
+        private async UniTask CreateEnemy()
+        {
+            Enemies = GameObject.Find("Enemies").transform;
+            aliveEnemies = new List<int>();
+            monsterPrefabs = new List<GameObject>();
+            for (int i = 1; i < 7; i++)
+            {
+                var monster = await GameModule.Resource.LoadAssetAsync<GameObject>("Monster" + i);
+                monsterPrefabs.Add(monster);
+            }
+
+            var go = await GameModule.Resource.LoadAssetAsync<GameObject>("Enemy");
+            enemyPrefab = go.GetComponent<Enemy>();
+
+            enemies = new List<Enemy>();
+
+            for (int i = 0; i < 3; i++) //create 3*3 enemy prefabs
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Enemy enemy = (Enemy)Instantiate(enemyPrefab);
+
+                    enemies.Add(enemy);
+
+                    enemy.transform.SetParent(Enemies);
+
+                    enemy.transform.localPosition = new Vector2(i * 50, j * 50);
+
+                    enemy.transform.name = "Monster (" + i + ", " + j + ") ";
+
+                    enemy.enemyID = i * 3 + j;
+                }
+            }
+
+            //Level = playerData.level; //load the level
+            Level = 1;
+            StartBattle(); //when everything is ready, start the fight
         }
 
         private async UniTask CreatePlayer()
         {
-            var go = await GameModule.Resource.LoadAssetAsync<GameObject>("Player");
-            _player = go.GetComponent<Player>();
+            var go = await GameModule.Resource.LoadGameObjectAsync("Player");
+            player = go.GetComponent<Player>();
         }
 
 
@@ -60,11 +107,9 @@ namespace GameLogic
             }
         }
 
-        public GameObject[] monsterPrefabs; //a list of monster prefabs
-        public Enemy enemyPrefab; //the enemy prefab
-        public Transform Enemies; //the parent object of enemy
+
         public int timeLimit = 30; //the time limit of each round
-        public Player player; //reference to the Player script
+
         public float nextRoundDelay = 2; //seconds delay before starting next round
 
         [HideInInspector]
@@ -75,8 +120,12 @@ namespace GameLogic
 
         [HideInInspector]
         public bool isBattling;
-        [HideInInspector] public ActiveSkill[] activeSkills; //the current using active skill
-        [HideInInspector] public PlayerData playerData; //the selected active skill in active skill selecting window
+
+        [HideInInspector]
+        public ActiveSkill[] activeSkills; //the current using active skill
+
+        [HideInInspector]
+        public PlayerData playerData; //the selected active skill in active skill selecting window
 
         private int level; //the monster level
         private int countdown; //the number shows on top-left
@@ -92,6 +141,7 @@ namespace GameLogic
                 //HUD.Instance.levelText.text = "Enemy Level: " + level.ToString (); //update the Level text on bottom-right
             }
         }
+
         private int money; //money you have
 
         public int Money
@@ -104,18 +154,9 @@ namespace GameLogic
                 //HUD.Instance.moneyText.text = "Money: " + money.ToString(); //when change the value of money, update the text
             }
         }
+
         void Awake()
         {
-            // if (instance == null)
-            // {
-            // 	instance = this;
-            // }
-            // else
-            // {
-            // 	if (this != instance)
-            // 		Destroy (this.gameObject);
-            // }
-
             //activeSkills = GameObject.Find ("HUD/AbilityWindow/Abilities").GetComponentsInChildren<ActiveSkill> (); //get the list of ActiveSkill scripts
 
             // if (Menu.newGame) //if it's a new game we get a new instance of PlayerData
@@ -130,32 +171,6 @@ namespace GameLogic
             // 	playerData = PlayerData.Load ();
         }
 
-        void Start()
-        {
-            enemies = new List<Enemy>();
-
-            for (int i = 0; i < 3; i++) //create 3*3 enemy prefabs
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    Enemy enemy = (Enemy)Instantiate(enemyPrefab);
-
-                    enemies.Add(enemy);
-
-                    enemy.transform.SetParent(Enemies);
-
-                    enemy.transform.localPosition = new Vector2(i * 50, j * 50);
-
-                    enemy.transform.name = "Monster (" + i + ", " + j + ") ";
-
-                    enemy.enemyID = i * 3 + j;
-                }
-            }
-
-            //Level = playerData.level; //load the level
-
-            StartBattle(); //when everything is ready, start the fight
-        }
 
         private void StartBattle()
         {
@@ -163,7 +178,7 @@ namespace GameLogic
 
             isBattling = true;
 
-            StartCoroutine("StartCountDown"); //start the time limit count down
+            //StartCoroutine("StartCountDown"); //start the time limit count down
 
             player.StartAttack();
         }

@@ -12,12 +12,13 @@ namespace GameLogic
         void Awake()
         {
             playerAnim = GetComponentsInChildren<Animator>()[0];
+            transform.position = new Vector3(-125, 40, 0);
         }
 
         public void StartAttack() //function for other scripts to call the attack coroutine
         {
             //StartCoroutine("Attack");
-            Attack().Forget();
+            //Attack().Forget();
         }
 
         public void StopAttack() //function to stop attack

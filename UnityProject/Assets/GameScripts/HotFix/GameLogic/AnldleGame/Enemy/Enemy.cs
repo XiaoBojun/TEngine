@@ -81,16 +81,16 @@ namespace GameLogic
 
             //healthBar.Reset(); //reset the health bar
 
-            // GameObject monster =
-            //     (GameObject)Instantiate(GameManager.Instance.monsterPrefabs[Random.Range(0, GameManager.Instance.monsterPrefabs.Length)]); //randomly create a monster prefab
-            //
-            // monster.transform.SetParent(transform);
-            //
-            // monster.transform.localPosition = Vector2.zero;
+            GameObject monster =
+                (GameObject)Instantiate(AnldleGame.Instance.monsterPrefabs[Random.Range(0, AnldleGame.Instance.monsterPrefabs.Count)]); //randomly create a monster prefab
+            
+            monster.transform.SetParent(transform);
+            
+            monster.transform.localPosition = Vector2.zero;
 
             canvas.SetActive(true); //show canvas again
 
-            //anim = monster.GetComponent<Animator>(); //set the reference to the animator on the newly created monster prefab
+            anim = monster.GetComponent<Animator>(); //set the reference to the animator on the newly created monster prefab
         }
     }
 }

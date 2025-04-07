@@ -13,14 +13,14 @@ namespace GameLogic
         private int maxHealth; //the max health
         private int loot; //how much money the player will get after killing this enemy
         private int health; //the current health
-        //private HealthBar healthBar; //reference to the healthBar script on this enemy
+        private HealthBar healthBar; //reference to the healthBar script on this enemy
         private Animator anim;
         private ParticleSystem deathParticle; //particle will play after death
         private GameObject canvas; //the canvas used to show health bar and damage popup text
 
         void Awake()
         {
-            //healthBar = GetComponentInChildren<HealthBar>();
+            healthBar = GetComponentInChildren<HealthBar>();
 
             deathParticle = GetComponentInChildren<ParticleSystem>();
 
@@ -48,9 +48,8 @@ namespace GameLogic
 
                 canvas.SetActive(false); //hide the canvas
 
-                //PlayerStats.Instance.Money += loot; //give the player the reward
-
-                //GameManager.Instance.aliveEnemies.Remove(enemyID); //remove this enmey from the enemy list
+                AnldleGame_Data.Instance.MoneyAdd(loot); //give the player the reward
+                AnldleGame.Instance.aliveEnemies.Remove(enemyID); //remove this enmey from the enemy list
             }
 
             float healthRatio = (float)health / maxHealth; //calculate the health ratio, this value will be used by HealthBar script. 
@@ -65,7 +64,7 @@ namespace GameLogic
 
             anim.SetTrigger("Damage"); //trigger the animation when the enemy gets attacked
 
-            //healthBar.Change(healthRatio); //call the function in HealthBar script to update the health bar
+            healthBar.Change(healthRatio); //call the function in HealthBar script to update the health bar
         }
 
         public void SpawnMonster(int level) //function used to spawn monster prefab
@@ -79,7 +78,7 @@ namespace GameLogic
 
             health = maxHealth; //set current health to full
 
-            //healthBar.Reset(); //reset the health bar
+            healthBar.Reset(); //reset the health bar
 
             GameObject monster =
                 (GameObject)Instantiate(AnldleGame.Instance.monsterPrefabs[Random.Range(0, AnldleGame.Instance.monsterPrefabs.Count)]); //randomly create a monster prefab

@@ -41,16 +41,20 @@ namespace GameLogic
             base.OnCreate();
             AddUIEvent<string>(IUI_HUD_Event.Update_Level, Update_Level);
             AddUIEvent<int>(IUI_HUD_Event.Update_Money, Update_Money);
+            AddUIEvent<int>(IUI_HUD_Event.Update_CountDown, Update_CountDown);
         }
 
+        private void Update_CountDown(int _countDown)
+        {
+            _textTime.text = _countDown.ToString();
+        }
         private void Update_Money(int money)
         {
-            _textMoney.text =  "Money: " + money.ToString (); ;
+            _textMoney.text =  "Money: " + money.ToString ();
         }
-
         private void Update_Level(string level)
         {
-            _textLevel.text ="Enemy Level: " + level.ToString ();;
+            _textLevel.text ="Enemy Level: " + level.ToString ();
         }
     }
 }

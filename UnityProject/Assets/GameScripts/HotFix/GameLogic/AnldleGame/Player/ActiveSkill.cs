@@ -28,9 +28,9 @@ namespace GameLogic
 
 		void Awake()
 		{
-			DamageLevel = AnldleGame.Instance.playerData.skills[ID].damageLevel; //load damage level from PlayerData
+			DamageLevel = AnldleGame_Data.Instance.playerData.skills[ID].damageLevel; //load damage level from PlayerData
 
-			SpeedLevel = AnldleGame.Instance.playerData.skills[ID].speedLevel; //load speed level from PlayerData
+			SpeedLevel = AnldleGame_Data.Instance.playerData.skills[ID].speedLevel; //load speed level from PlayerData
 
 			if (description == "") //if the description is omitted, set up the default description
 			{
@@ -51,7 +51,7 @@ namespace GameLogic
 			if (isStartingSkill) //unlock the skill if it's a starting skill
 				Unlock();
 
-			if (AnldleGame.Instance.playerData.skills[ID].unlocked) //according to the saved game file, unlock the skill if it has been unlocked
+			if (AnldleGame_Data.Instance.playerData.skills[ID].unlocked) //according to the saved game file, unlock the skill if it has been unlocked
 				Unlock();
 		}
 

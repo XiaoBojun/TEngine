@@ -87,17 +87,17 @@ namespace GameLogic
 
                 PlayerPrefs.SetString("PlayerData", writer.ToString());
 
-                //PlayerPrefs.Save (); //By default Unity writes the saved data to disk on application quit. Uncomment this line to write to disk instantly.
+                PlayerPrefs.Save (); //By default Unity writes the saved data to disk on application quit. Uncomment this line to write to disk instantly.
             }
         }
 
         private void PrepareToSave() //get all kinds of game information
         {
-            level = AnldleGame.Instance.Level;
+            level = AnldleGame_Data.Instance.Level;
 
-            //money = PlayerStats.Instance.Money;
+            money = AnldleGame_Data.Instance.Money;
 
-            //activatedSkillID = PlayerStats.Instance.activeSkill.ID;
+            activatedSkillID = AnldleGame_Data.Instance.activatedSkillID;
 
             skills = new Skill[AnldleGame.Instance.activeSkills.Length];
 

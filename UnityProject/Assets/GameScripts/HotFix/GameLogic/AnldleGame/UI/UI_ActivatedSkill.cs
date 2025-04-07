@@ -29,7 +29,6 @@ namespace GameLogic
         
         [HideInInspector]
         public ActiveSkill activeSkill; //reference to the current using active skill
-
         [HideInInspector]
         public ActiveSkill selectedActiveSkill; //used when you select a skill in active skill selecting window
         private float timer; //when this number is bigger than attackInterval, the character attacks
@@ -39,7 +38,7 @@ namespace GameLogic
             base.OnCreate();
             foreach (ActiveSkill activeSkill in AnldleGame.Instance.activeSkills) //load the activeSkill which has the saved ID
             {
-            	if (activeSkill.ID == AnldleGame.Instance.playerData.activatedSkillID)
+            	if (activeSkill.ID == AnldleGame_Data.Instance.playerData.activatedSkillID)
             	{
             		this.activeSkill = selectedActiveSkill = activeSkill;
             
@@ -52,7 +51,7 @@ namespace GameLogic
             
             //Money = AnldleGame.Instance.playerData.money; //load the amount of money
             
-            TimeSpan timeSinceLastPlay = DateTime.Now - AnldleGame.Instance.playerData.quitTime; //calculate the time difference between last play and now
+            TimeSpan timeSinceLastPlay = DateTime.Now - AnldleGame_Data.Instance.playerData.quitTime; //calculate the time difference between last play and now
             
             //if (timeSinceLastPlay > TimeSpan.Zero) //if the difference is not negative
             	//Money += (int)(timeSinceLastPlay.TotalHours * Mathf.Pow(AnldleGame.Instance.playerData.level, 2f)); //gain money according to the time difference

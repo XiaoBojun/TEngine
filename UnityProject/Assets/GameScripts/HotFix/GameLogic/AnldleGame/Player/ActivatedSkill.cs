@@ -59,8 +59,9 @@ namespace GameLogic
 		//
 		// 	activatedSkillIcon.sprite = PlayerStats.Instance.activeSkill.skillIcon;
 		// }
-		//
-		// HUD.Instance.HideAbilityWindow (); //hide the active skill selecting window
+		
+		GameModule.UI.ShowUI<UI_AbilityWindow>();
+		//HUD.Instance.HideAbilityWindow (); //hide the active skill selecting window
 	}
 
 	private new IEnumerator Move () //get called by HoverON, which is inherited from Popup. This function will let the popup text follow your cursor.

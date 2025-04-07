@@ -34,7 +34,7 @@ namespace GameLogic
         /// UI根节点访问属性
         /// </summary>
         public static Transform UIRoot => _instanceRoot;
-
+        public Transform UIParent => _instanceRoot;
         /// <summary>
         /// UI摄像机访问属性
         /// </summary>

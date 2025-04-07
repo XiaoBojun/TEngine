@@ -28,8 +28,11 @@ public partial class GameApp
     
     private static void StartGameLogic()
     {
-        GameModule.UI.ShowUIAsync<Menu>();
-        GameModule.Audio.Play(AudioType.Music,"GameBGM",true);
+        //GameModule.UI.ShowUIAsync<Menu>();
+        //GameModule.Audio.Play(AudioType.Music,"GameBGM",true);
+        //GameModule.UI.ShowUI<UI_GMPanel>();
+        GameModule.UI.ShowUI<UI_Scrollview>();
+        
     }
     
     private static void Release()

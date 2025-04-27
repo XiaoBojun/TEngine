@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace GameLogic
 {
@@ -42,6 +43,9 @@ namespace GameLogic
             AddUIEvent<string>(IUI_HUD_Event.Update_Level, Update_Level);
             AddUIEvent<int>(IUI_HUD_Event.Update_Money, Update_Money);
             AddUIEvent<int>(IUI_HUD_Event.Update_CountDown, Update_CountDown);
+            
+            // GameEvent.Get<IUI_HUD>().Update_Level("1");
+            // GameEvent.Send<string>(IUI_HUD_Event.Update_Level, "1");
         }
 
         private void Update_CountDown(int _countDown)

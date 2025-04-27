@@ -1,5 +1,7 @@
 using TEngine;
 
+using UnityEngine.Rendering.Universal;
+
 namespace GameLogic
 {
     [EventInterface(EEventGroup.GroupUI)]
@@ -9,6 +11,6 @@ namespace GameLogic
 
         void Update_Money(int _money);
 
-        void Update_CountDown(int _countDown);
+        void Update_CountDown(string _countDown);
     }
 }

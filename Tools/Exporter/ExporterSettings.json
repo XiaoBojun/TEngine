@@ -1,0 +1,69 @@
+{
+    "Export": {
+        "NetworkProtocolDirectory": {
+            "Value": "../../Configs/Config/NetworkProtocol/",
+            "Comment": "ProtoBuf文件所在的文件夹位置"
+        },
+        "NetworkProtocolServerDirectory": {
+            "Value": "../../Server/Entity/Generate/NetworkProtocol/",
+            "Comment": "ProtoBuf生成到服务端的文件夹位置"
+        },
+        "NetworkProtocolClientDirectory": {
+            "Value": "../../UnityProject/Assets/GameScripts/HotFix/GameProto/Generate/NetworkProtocol/",
+            "Comment": "ProtoBuf生成到客户端的文件夹位置"
+        },
+        "ExcelProgramPath": {
+            "Value": "../../Configs/Config/Excel/",
+            "Comment": "Excel文件夹的根目录"
+        },
+        "ExcelVersionFile": {
+            "Value": "../../Configs/Config/Excel/Version.txt",
+            "Comment": "Excel的Version文件位置、这个文件用于记录每次导出对比是否需要再次导出的文件"
+        },
+        "ExcelServerFileDirectory": {
+            "Value": "../../Server/Entity/Generate/ConfigTable/Entity/",
+            "Comment": "Excel生成的代码文件、在服务端文件夹位置"
+        },
+        "ExcelClientFileDirectory": {
+            "Value": "../../UnityProject/Assets/GameScripts/HotFix/GameProto/Generate/ConfigTable/Entity/",
+            "Comment": "Excel生成的代码文件、在客户端文件夹位置"
+        },
+        "ExcelServerBinaryDirectory": {
+            "Value": "../../Configs/Config/Binary/",
+            "Comment": "Excel生成服务器二进制数据文件夹位置"
+        },
+        "ExcelClientBinaryDirectory": {
+            "Value": "../../UnityProject/Assets/AssetRaw/Configs/",
+            "Comment": "Excel生成在客户端的二进制数据文件夹位置"
+        },
+        "ExcelServerJsonDirectory": {
+            "Value": "../../Configs/Config/Json/Server/",
+            "Comment": "Excel生成在服务端的Json数据文件夹位置"
+        },
+        "ExcelClientJsonDirectory": {
+            "Value": "../../Configs/Config/Json/Client/",
+            "Comment": "Excel生成在客户端的Json数据文件夹位置"
+        },
+        "ServerCustomExportDirectory": {
+            "Value": "../../Server/Entity/Generate/CustomExport/",
+            "Comment": "Excel在服务端生成自定义代码的文件夹位置"
+        },
+        "ClientCustomExportDirectory": {
+            "Value": "../../UnityProject/Assets/GameScripts/HotFix/GameProto/Generate/CustomExport",
+            "Comment": "Excel在客户端端生成自定义代码的文件夹位置"
+        },
+        "Serializes": {
+            "Value": [
+                {
+                    "KeyIndex": 0,
+                    "NameSpace" : "MemoryPack",
+                    "SerializeName": "MemoryPack",
+                    "Attribute": "\t[MemoryPackable]",
+                    "Ignore": "\t\t[MemoryPackIgnore]",
+                    "Member": "MemoryPackOrder"
+                }
+            ],
+            "Comment": "自定义序列化器"
+        }
+    }
+}

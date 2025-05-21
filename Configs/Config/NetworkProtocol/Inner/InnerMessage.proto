@@ -1,0 +1,68 @@
+syntax = "proto3";
+package Sining.Message;
+
+/// Gate登录到Chat服务器
+message G2Chat_LoginRequest // IRouteRequest,Chat2G_LoginResponse
+{
+	string UserName = 1;
+	long UnitId = 2;
+	long GateRouteId = 3;
+}
+message Chat2G_LoginResponse // IRouteResponse
+{
+	int64 ChatRouteId = 1;
+}
+/// Gate通知Chat服务器下线
+message G2Chat_OfflineRequest // IRouteRequest,Chat2G_OfflineResponse
+{
+
+}
+message Chat2G_OfflineResponse // IRouteResponse
+{
+
+}
+/// Chat通知Gate发送一个全服广播的聊天信息
+message Chat2G_ChatMessage // IRouteMessage
+{
+	ChatInfoTree ChatInfoTree = 1;
+}
+/// 其他服务器发送聊天消息到Chat
+message Other2Chat_ChatMessage // IRouteMessage
+{
+	ChatInfoTree ChatInfoTree = 1;
+}
+/// Gate登录到Map服务器
+message G2M_LoginRequest // IRouteRequest,M2G_LoginResponse
+{
+	long ChatUnitRouteId = 1;
+}
+message M2G_LoginResponse // IRouteResponse
+{
+	int64 MapRouteId = 1;
+}
+
+//message G2A_TestRequest // IRouteRequest,G2A_TestResponse
+//{
+//
+//}
+//message G2A_TestResponse // IRouteResponse
+//{
+//	
+//}
+//message G2M_RequestAddressableId // IRouteRequest,M2G_ResponseAddressableId
+//{
+//
+//}
+//message M2G_ResponseAddressableId // IRouteResponse
+//{
+//	int64 AddressableId = 1;	// Map服务器返回的AddressableId
+//}
+///// 通知Chat服务器创建一个RouteId
+//message G2Chat_CreateRouteRequest // IRouteRequest,Chat2G_CreateRouteResponse
+//{
+//	int64 GateRouteId = 1;
+//}
+//message Chat2G_CreateRouteResponse // IRouteResponse
+//{
+//	int64 ChatRouteId = 1;
+//}

@@ -13,3 +13,13 @@ Tools/FileServer/AssetRoot
 
 UnityProject/ProjectSettings/CommonBurstAotSettings.json
 UnityProject/ProjectSettings/BurstAotSettings_StandaloneWindows.json
+NuGet/Fantasy.Exporter/bin
+NuGet/Fantasy.Exporter/obj
+Server/Entity/bin
+Server/Entity/obj
+Server/Hotfix/bin
+Server/Hotfix/obj
+Server/Main/bin
+Server/Main/obj
+Tools/RegisterLogin/Main/bin
+Tools/RegisterLogin/Main/obj

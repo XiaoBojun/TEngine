@@ -13,6 +13,15 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.fantasy.unity": {
+      "version": "https://github.com/qq362946/Fantasy.Unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "15e1217a5955cb281d9abed51980cebf0ef51286"
+    },
     "com.tuyoogame.yooasset": {
       "version": "file:YooAsset",
       "depth": 0,

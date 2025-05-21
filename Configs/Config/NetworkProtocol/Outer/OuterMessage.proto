@@ -1,0 +1,195 @@
+syntax = "proto3";
+package Fantasy.Network.Message;
+// 协议分为:
+// ProtoBuf:可以在Outer和Inner文件里使用。
+// MemoryPack:可以在Outer和Inner文件里使用。
+// Bson:仅支持在Inner文件里使用。
+// 使用方式:
+// 在message协议上方添加// Protocol+空格+协议名字
+// 例如:// Protocol ProtoBuf 或 // Protocol MemoryPack
+
+//聊天
+/// 登录游戏
+message C2G_LoginRequest // IRequest,G2C_LoginResponse
+{
+	string UserName = 1;
+}
+message G2C_LoginResponse // IResponse
+{
+
+}
+/// 退出游戏
+message C2G_ExitRequest // IRequest,G2C_ExitResponse
+{
+
+}
+message G2C_ExitResponse // IResponse
+{
+
+}
+/// 发送一个聊天消息给Chat服务器，中间是经过Gate中转的
+message C2Chat_SendMessageRequest // ICustomRouteRequest,Chat2C_SendMessageResponse,ChatRoute
+{
+	ChatInfoTree ChatInfoTree = 1;
+}
+message Chat2C_SendMessageResponse // ICustomRouteResponse
+{
+
+}
+// 该消息是Chat发送给Gate服务器，让Gate服务器自动转发到客户端
+message Chat2C_Message // ICustomRouteMessage,ChatRoute
+{
+	ChatInfoTree ChatInfoTree = 1;
+}
+/// 聊天消息树
+message ChatInfoTree
+{
+	int32 ChatChannelType = 1;			// 频道的类型
+	int64 ChatChannelId = 2;			// 频道的ID
+	int64 UnitId = 3;					// 发送人的UnitId
+	string UserName = 4;				// 发送人的名字
+	repeated int64 Target = 5;			// 接收聊天信息的目标数组
+	repeated ChatInfoNode Node = 6;		// 聊天节点
+}
+/// 聊天信息节点
+message ChatInfoNode
+{
+	int32 ChatNodeType = 1;		// 节点类型（例如：超链接、普通的内容、表情...）
+	int32 ChatNodeEvent = 2;	// 节点分发事件的类型（例如:点击某个字打开某个UI或者执行某些操作）
+	string Content = 3;			// 信息内容
+	string Color = 4;			// 表示这个内容的颜色
+	byte[] Data = 5;			// 表示附加的一些数据
+}
+/// 聊天位置信息节点
+message ChatPositionNode
+{
+	string MapName = 1;
+	float PosX = 2;
+	float PosY = 3;
+	float PosZ = 4;
+}
+/// 聊天位置信息节点
+message ChatOpenUINode
+{
+	string UIName = 1;
+}
+/// 聊天连接信息节点
+message ChatLinkNode
+{
+	string Link = 1;
+}
+/// 装备信息实体
+message Item
+{
+	string Level = 1;
+	string Name = 2;
+	string HP = 3;
+	string MP = 4;
+}
+
+////注册
+//message C2A_RegisterRequest // IRequest,A2C_RegisterResponse
+//{
+//	string Username = 1;
+//	string Password = 2;
+//}
+//message A2C_RegisterResponse // IResponse
+//{
+//
+//}
+//message C2A_LoginRequrst // IRequest,A2C_LoginResponse
+//{
+//	string Username = 1;
+//	string Password = 2;
+//	int32 LoginType = 3;
+//}
+//message A2C_LoginResponse // IResponse
+//{
+//	string ToKen = 1;
+//}
+///// 客户端登录到Gate服务器
+//message C2G_LoginRequest // IRequest,G2C_LoginResponse
+//{
+//	string ToKen = 1;
+//}
+//message G2C_LoginResponse // IResponse
+//{
+//	GameAccountInfo GameAccountInfo = 1;
+//}
+///// 通知客户端重复登录
+//message G2C_RepeatLogin // IMessage
+//{
+//
+//}
+///// GameAccount实体类
+//message GameAccountInfo
+//{
+//	int64 CreateTime = 1;
+//	int64 LoginTime = 2;
+//}
+///// 拿到当前账号的信息
+//message C2G_GetAccountInfoRequest // IRequest,G2C_GetAccountInfoResponse
+//{
+//
+//}
+//message G2C_GetAccountInfoResponse // IResponse
+//{
+//	GameAccountInfo GameAccountInfo = 1;
+//}
+//
+//
+//message C2G_TestMessage // IMessage
+//{
+//	string Tag = 1;
+//}
+//message C2G_TestRequest // IRequest,G2C_TestResponse
+//{
+//	string Tag = 1;
+//}
+//message G2C_TestResponse // IResponse
+//{
+//	string Tag = 1;
+//}
+//message C2G_CreateAddressableRequest // IRequest,G2C_CreateAddressableResponse
+//{
+//
+//}
+//message G2C_CreateAddressableResponse // IResponse
+//{
+//
+//}
+//message C2M_TestMessage // IAddressableRouteMessage
+//{
+//	string Tag = 1;
+//}
+//message C2M_TestRequest // IAddressableRouteRequest,M2C_TestResponse
+//{
+//	string Tag = 1;
+//}
+//message M2C_TestResponse // IAddressableRouteResponse
+//{
+//	string Tag = 1;
+//}
+///// 通知Gate服务器创建一个Chat的Route连接
+//message C2G_CreateChatRouteRequest // IRequest,G2C_CreateChatRouteResponse
+//{
+//
+//}
+//message G2C_CreateChatRouteResponse // IResponse
+//{
+//
+//}
+///// 发送一个Route消息给Chat
+//message C2Chat_TestMessage // ICustomRouteMessage,ChatRoute
+//{
+//	string Tag = 1;
+//}
+///// 发送一个RPCRoute消息给Chat
+//message C2Chat_TestMessageRequest // ICustomRouteRequest,Chat2C_TestMessageResponse,ChatRoute
+//{
+//	string Tag = 1;
+//}
+//message Chat2C_TestMessageResponse // ICustomRouteResponse
+//{
+//	string Tag = 1;
+//}

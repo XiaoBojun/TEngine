@@ -830,6 +830,15 @@ namespace TEngine
                 }
                 return _tweenHelper.Custom(target, startValue, endValue, duration, onValueChange, ease, cycles, cycleMode, startDelay, endDelay, useUnscaledTime);
             }
+            public static long Custom(UnityEngine.Vector3 startValue, UnityEngine.Vector3 endValue, float duration, Action<UnityEngine.Vector3> onValueChange,
+                Ease ease = Ease.Default, int cycles = 1, CycleMode cycleMode = CycleMode.Restart, float startDelay = 0, float endDelay = 0, bool useUnscaledTime = false)
+            {
+                if (_tweenHelper == null)
+                {
+                    throw new GameFrameworkException("ITweenHelper is invalid.");
+                }
+                return _tweenHelper.Custom(startValue, endValue, duration, onValueChange, ease, cycles, cycleMode, startDelay, endDelay, useUnscaledTime);
+            }
         }
     }
     

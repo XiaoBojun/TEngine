@@ -305,7 +305,11 @@ namespace TEngine
                 public long Custom<T>(T target, float startValue, float endValue, float duration, Action<T, float> onValueChange,
                     Ease ease = Ease.Default, int cycles = 1, CycleMode cycleMode = CycleMode.Restart, float startDelay = 0, float endDelay = 0, bool useUnscaledTime = false)
                     where T : class;
+                public long Custom(UnityEngine.Vector3 startValue, UnityEngine.Vector3 endValue, float duration, Action<UnityEngine.Vector3> onValueChange,
+                    Ease ease = Ease.Default, int cycles = 1, CycleMode cycleMode = CycleMode.Restart, float startDelay = 0, float endDelay = 0, bool useUnscaledTime = false);
+                  
             }
+            
         }
     }
 }

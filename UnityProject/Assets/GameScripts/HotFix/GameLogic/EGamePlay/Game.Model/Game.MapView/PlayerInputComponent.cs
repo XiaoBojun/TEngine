@@ -1,0 +1,17 @@
+﻿//using DG.Tweening;
+using ECS;
+using System.Collections;
+using System.Collections.Generic;
+using PrimeTween;
+using UnityEngine;
+
+namespace ECSGame
+{
+    public class PlayerInputComponent : EcsComponent
+    {
+        // public Tweener MoveTweener { get; set; }
+        // public Tweener LookAtTweener { get; set; }
+        public Tween MoveTweener { get; set; }
+        public Tween LookAtTweener { get; set; }
+    }
+}

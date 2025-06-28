@@ -26,12 +26,19 @@ public class AppLoad : SingletonBehaviour<AppLoad>
     private EcsNode EcsNode { get; set; }
     private Dictionary<string, string> ScriptFiles { get; set; } = new Dictionary<string, string>();
     //public GameObject ReloadPanelObj;
+    [SerializeField]
     public ReferenceCollector ConfigsCollector;
+    [SerializeField]
     public ReferenceCollector PrefabsCollector;
     //public AbilityConfigObject SkillConfigObject;
 
-    public void Init()
+    protected override void OnLoad()
     {
+        base.OnLoad();
+    // }
+    //
+    // public void Init()
+    // {
         NeedReloadShare = true;
         
         
@@ -75,7 +82,8 @@ public class AppLoad : SingletonBehaviour<AppLoad>
     {
         var changed = false;
 #if UNITY_EDITOR
-        var allAssets = UnityEditor.AssetDatabase.FindAssets("t:Script", new string[] { "Assets/Game.System" });
+        var allAssets = UnityEditor.AssetDatabase.FindAssets("t:Script", 
+            new string[] { "Assets/GameScripts/HotFix/GameLogic/EGamePlay/Game.System" });
         var newAssets = new List<string>();
         foreach (var item in allAssets)
         {

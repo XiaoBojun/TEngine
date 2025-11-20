@@ -1,0 +1,229 @@
+syntax = "proto3";
+package Fantasy.Network.Message;
+// 协议分为:
+// ProtoBuf:可以在Outer和Inner文件里使用。
+// MemoryPack:可以在Outer和Inner文件里使用。
+// Bson:仅支持在Inner文件里使用。
+// 使用方式:
+// 在message协议上方添加// Protocol+空格+协议名字
+// 例如:// Protocol ProtoBuf 或 // Protocol MemoryPack
+/// 发送一个消息到Gate服务器
+message C2G_TestMessage // IMessage
+{
+	string Tag = 1;
+}
+message C2G_TestRequest // IRequest,G2C_TestResponse
+{
+	string Tag = 1;
+}
+message G2C_TestResponse // IResponse
+{
+	string Tag = 1;
+}
+message C2G_TestRequestPushMessage // IMessage
+{
+
+}
+/// Gate服务器推送一个消息给客户端
+message G2C_PushMessage // IMessage
+{
+	string Tag = 1;
+}
+message C2G_CreateAddressableRequest // IRequest,G2C_CreateAddressableResponse
+{
+
+}
+message G2C_CreateAddressableResponse // IResponse
+{
+
+}
+message C2M_TestMessage // IAddressableMessage
+{
+	string Tag = 1;
+}
+message C2M_TestRequest // IAddressableRequest,M2C_TestResponse
+{
+	string Tag = 1;
+}
+message M2C_TestResponse // IAddressableResponse
+{
+	string Tag = 1;
+}
+/// 通知Gate服务器创建一个Chat的Route连接
+message C2G_CreateChatRouteRequest // IRequest,G2C_CreateChatRouteResponse
+{
+
+}
+message G2C_CreateChatRouteResponse // IResponse
+{
+
+}
+/// 发送一个Route消息给Chat
+message C2Chat_TestMessage // ICustomRouteMessage,ChatRoute
+{
+	string Tag = 1;
+}
+/// 发送一个RPCRoute消息给Chat
+message C2Chat_TestMessageRequest // ICustomRouteRequest,Chat2C_TestMessageResponse,ChatRoute
+{
+	string Tag = 1;
+}
+message Chat2C_TestMessageResponse // ICustomRouteResponse
+{
+	string Tag = 1;
+}
+/// 发送一个RPC消息给Map，让Map里的Entity转移到另外一个Map上
+message C2M_MoveToMapRequest // IAddressableRequest,M2C_MoveToMapResponse
+{
+
+}
+message M2C_MoveToMapResponse // IAddressableResponse
+{
+
+}
+/// 发送一个消息给Gate，让Gate发送一个Addressable消息给MAP
+message C2G_SendAddressableToMap // IMessage
+{
+	string Tag = 1;
+}
+/// 发送一个消息给Chat，让Chat服务器主动推送一个RouteMessage消息给客户端
+message C2Chat_TestRequestPushMessage // ICustomRouteMessage,ChatRoute
+{
+
+}
+/// Chat服务器主动推送一个消息给客户端
+message Chat2C_PushMessage // ICustomRouteMessage,ChatRoute
+{
+	string Tag = 1;
+}
+/// 客户端发送给Gate服务器通知map服务器创建一个SubScene
+message C2G_CreateSubSceneRequest // IRequest,G2C_CreateSubSceneResponse
+{
+
+}
+message G2C_CreateSubSceneResponse // IResponse
+{
+
+}
+/// 客户端通知Gate服务器给SubScene发送一个消息
+message C2G_SendToSubSceneMessage // IMessage
+{
+
+}
+/// 客户端通知Gate服务器创建一个SubScene的Address消息
+message C2G_CreateSubSceneAddressableRequest // IRequest,G2C_CreateSubSceneAddressableResponse
+{
+
+}
+message G2C_CreateSubSceneAddressableResponse // IResponse
+{
+
+}
+/// 客户端向SubScene发送一个测试消息
+message C2SubScene_TestMessage // IAddressableMessage
+{
+	string Tag = 1;
+}
+/// 客户端向SubScene发送一个销毁测试消息
+message C2SubScene_TestDisposeMessage // IAddressableMessage
+{
+
+}
+/// 客户端向服务器发送连接消息（Roaming）
+message C2G_ConnectRoamingRequest // IRequest,G2C_ConnectRoamingResponse
+{
+
+}
+message G2C_ConnectRoamingResponse // IResponse
+{
+
+}
+/// 测试一个Chat漫游普通消息
+message C2Chat_TestRoamingMessage // IRoamingMessage,ChatRoamingType
+{
+	string Tag = 1;
+}
+/// 测试一个Map漫游普通消息
+message C2Map_TestRoamingMessage // IRoamingMessage,MapRoamingType
+{
+	string Tag = 1;
+}
+/// 测试一个Chat漫游RPC消息
+message C2Chat_TestRPCRoamingRequest // IRoamingRequest,Chat2C_TestRPCRoamingResponse,ChatRoamingType
+{
+	string Tag = 1;
+}
+message Chat2C_TestRPCRoamingResponse // IRoamingResponse
+{
+
+}
+/// 客户端发送一个漫游消息给Map通知Map主动推送一个消息给客户端
+message C2Map_PushMessageToClient // IRoamingMessage,MapRoamingType
+{
+	string Tag = 1;
+}
+/// 漫游端发送一个消息给客户端
+message Map2C_PushMessageToClient // IRoamingMessage,MapRoamingType
+{
+	string Tag = 1;
+}
+/// 测试传送漫游的触发协议
+message C2Map_TestTransferRequest // IRoamingRequest,Map2C_TestTransferResponse,MapRoamingType
+{
+
+}
+message Map2C_TestTransferResponse // IRoamingResponse
+{
+
+}
+/// 测试一个Chat发送到Map之间漫游协议
+message C2Chat_TestSendMapMessage // IRoamingMessage,ChatRoamingType
+{
+	string Tag = 1;
+}
+/// 通知Gate服务器发送一个Route消息给Map的漫游终端
+message C2G_TestRouteToRoaming // IMessage
+{
+	string Tag = 1;
+}
+/// 通知Gate服务器发送一个漫游消息给Map的漫游终端
+message C2G_TestRoamingToRoaming // IMessage
+{
+	string Tag = 1;
+}
+/// 通知Gate服务器发送一个内网消息通知Map服务器向Gate服务器注册一个领域事件
+message C2G_SubscribeSphereEventRequest // IRequest,G2C_SubscribeSphereEventResponse
+{
+
+}
+message G2C_SubscribeSphereEventResponse // IResponse
+{
+
+}
+/// 通知Gate发送一个订阅领域事件
+message C2G_PublishSphereEventRequest // IRequest,G2C_PublishSphereEventResponse
+{
+
+}
+message G2C_PublishSphereEventResponse // IResponse
+{
+
+}
+/// 通知Gate取消一个订阅领域事件
+message C2G_UnsubscribeSphereEventRequest // IRequest,G2C_UnsubscribeSphereEventResponse
+{
+
+}
+message G2C_UnsubscribeSphereEventResponse // IResponse
+{
+
+}
+/// 通知Map取消一个订阅领域事件
+message C2G_MapUnsubscribeSphereEventRequest // IRequest,G2C_MapUnsubscribeSphereEventResponse
+{
+
+}
+message G2C_MapUnsubscribeSphereEventResponse // IResponse
+{
+
+}

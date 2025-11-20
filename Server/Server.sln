@@ -1,0 +1,51 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main/Main.csproj", "{88E89162-897C-4703-828D-C69BAC393140}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity/Entity.csproj", "{7F8931E2-347F-42DB-8C4B-39A1AFB14230}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotfix", "Hotfix/Hotfix.csproj", "{50255568-892A-49E5-A6C6-CFF403FB2B4E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{77E1D013-F4BC-4E84-9AA1-7DA6E77AE8E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetworkProtocol", "NetworkProtocol", "{D0063D50-CDB9-4913-8F40-22779C88D38A}"
+	ProjectSection(SolutionItems) = preProject
+		..\Configs\NetworkProtocol\Inner\InnerMessage.proto = ..\Configs\NetworkProtocol\Inner\InnerMessage.proto
+		..\Configs\NetworkProtocol\OpCode.Cache = ..\Configs\NetworkProtocol\OpCode.Cache
+		..\Configs\NetworkProtocol\Outer\OuterMessage.proto = ..\Configs\NetworkProtocol\Outer\OuterMessage.proto
+		..\Configs\NetworkProtocol\RoamingType.Config = ..\Configs\NetworkProtocol\RoamingType.Config
+		..\Configs\NetworkProtocol\RouteType.Config = ..\Configs\NetworkProtocol\RouteType.Config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProtocolExportTool", "ProtocolExportTool", "{38A384A1-9CB2-478B-BE1C-8E54923C5CBD}"
+	ProjectSection(SolutionItems) = preProject
+		..\Tools\ProtocolExportTool\ExporterSettings.json = ..\Tools\ProtocolExportTool\ExporterSettings.json
+		..\Tools\ProtocolExportTool\Run.bat = ..\Tools\ProtocolExportTool\Run.bat
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88E89162-897C-4703-828D-C69BAC393140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88E89162-897C-4703-828D-C69BAC393140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88E89162-897C-4703-828D-C69BAC393140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88E89162-897C-4703-828D-C69BAC393140}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F8931E2-347F-42DB-8C4B-39A1AFB14230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F8931E2-347F-42DB-8C4B-39A1AFB14230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F8931E2-347F-42DB-8C4B-39A1AFB14230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F8931E2-347F-42DB-8C4B-39A1AFB14230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50255568-892A-49E5-A6C6-CFF403FB2B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50255568-892A-49E5-A6C6-CFF403FB2B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50255568-892A-49E5-A6C6-CFF403FB2B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50255568-892A-49E5-A6C6-CFF403FB2B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D0063D50-CDB9-4913-8F40-22779C88D38A} = {77E1D013-F4BC-4E84-9AA1-7DA6E77AE8E1}
+		{38A384A1-9CB2-478B-BE1C-8E54923C5CBD} = {77E1D013-F4BC-4E84-9AA1-7DA6E77AE8E1}
+	EndGlobalSection
+EndGlobal

@@ -14,8 +14,6 @@ dotnet "${LUBAN_DLL}" \
     -c cs-bin \
     -d bin \
     --conf "${CONF_ROOT}/luban.conf" \
+    -x code.lineEnding=crlf \
     -x outputCodeDir="${CODE_OUTPATH}" \
     -x outputDataDir="${DATA_OUTPATH}"
-
-echo "操作完成，按任意键退出..."
-read -k1

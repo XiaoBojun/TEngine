@@ -105,25 +105,31 @@ namespace GameLogic
                         return;
                     }
 
+                    var oldOrder = _canvas.sortingOrder;
                     // 设置父类
                     _canvas.sortingOrder = value;
-
                     // 设置子类
-                    int depth = value;
+                    // int depth = value;
                     for (int i = 0; i < _childCanvas.Length; i++)
                     {
                         var canvas = _childCanvas[i];
                         if (canvas != _canvas)
                         {
-                            depth += 5; //注意递增值
-                            canvas.sortingOrder = depth;
+                            // depth += 5; //注意递增值
+                            // canvas.sortingOrder = depth;
+                            canvas.sortingOrder = value + (canvas.sortingOrder - oldOrder);
                         }
                     }
 
+
                     // 虚函数
-                    if (_isCreate)
+                    if (Visible)
                     {
-                        OnSortDepth(value);
+                        _OnSortDepth();
+                    }
+                    else
+                    {
+                        _isSortingOrderDirty = true;
                     }
                 }
             }
@@ -159,6 +165,12 @@ namespace GameLogic
                     for (int i = 0; i < _childCanvas.Length; i++)
                     {
                         _childCanvas[i].gameObject.layer = setLayer;
+                    }
+
+                    if (value && _isCreate)
+                    {
+                        _isSortingOrderDirty = false;
+                        _OnSortDepth();
                     }
 
                     // 交互设置

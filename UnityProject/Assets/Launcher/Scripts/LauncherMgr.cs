@@ -63,6 +63,7 @@ namespace Launcher
                     {
                         ui.transform.SetParent(_uiRoot.transform);
                         ui.transform.localScale = Vector3.one;
+                        ui.transform.localRotation = Quaternion.identity;
                         ui.transform.localPosition = Vector3.zero;
                         RectTransform rect = ui.GetComponent<RectTransform>();
                         rect.sizeDelta = Vector2.zero;

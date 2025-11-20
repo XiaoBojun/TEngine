@@ -114,6 +114,11 @@ namespace GameLogic
         protected bool _updateListValid = false;
 
         /// <summary>
+        /// 是否标记脏排序
+        /// </summary>
+        protected bool _isSortingOrderDirty = false;
+
+        /// <summary>
         /// 代码自动生成绑定。
         /// </summary>
         protected virtual void ScriptGenerator()
@@ -176,7 +181,24 @@ namespace GameLogic
         /// <summary>
         /// 当触发窗口的层级排序。
         /// </summary>
-        protected virtual void OnSortDepth(int depth)
+        protected void _OnSortDepth()
+        {
+            if (ListChild != null)
+            {
+                for (int i = 0; i < ListChild.Count; i++)
+                {
+                    ListChild[i].OnSortDepth();
+                }
+            }
+
+            OnSortDepth();
+        }
+
+
+        /// <summary>
+        /// 当触发窗口的层级排序。
+        /// </summary>
+        protected virtual void OnSortDepth()
         {
         }
 

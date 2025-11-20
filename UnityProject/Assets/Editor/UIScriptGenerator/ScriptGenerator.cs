@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TEngine.Editor.UI
 {
-    public class ScriptGenerator
+    public partial class ScriptGenerator
     {
         private const string Gap = "/";
 
@@ -15,10 +15,22 @@ namespace TEngine.Editor.UI
             Generate(false);
         }
 
+        [MenuItem("GameObject/ScriptGenerator/UIProperty", true, priority = 41)]
+        public static bool ValidateMemberProperty()
+        {
+            return !ScriptGeneratorSetting.Instance.UseBindComponent;
+        }
+
         [MenuItem("GameObject/ScriptGenerator/UIProperty - UniTask", priority = 43)]
         public static void MemberPropertyUniTask()
         {
             Generate(false, true);
+        }
+
+        [MenuItem("GameObject/ScriptGenerator/UIProperty - UniTask", true, priority = 41)]
+        public static bool ValidateMemberPropertyUniTask()
+        {
+            return !ScriptGeneratorSetting.Instance.UseBindComponent;
         }
 
         [MenuItem("GameObject/ScriptGenerator/UIPropertyAndListener", priority = 42)]
@@ -27,10 +39,22 @@ namespace TEngine.Editor.UI
             Generate(true);
         }
 
+        [MenuItem("GameObject/ScriptGenerator/UIPropertyAndListener", true, priority = 41)]
+        public static bool ValidateMemberPropertyAndListener()
+        {
+            return !ScriptGeneratorSetting.Instance.UseBindComponent;
+        }
+
         [MenuItem("GameObject/ScriptGenerator/UIPropertyAndListener - UniTask", priority = 44)]
         public static void MemberPropertyAndListenerUniTask()
         {
             Generate(true, true);
+        }
+
+        [MenuItem("GameObject/ScriptGenerator/UIPropertyAndListener - UniTask", true, priority = 41)]
+        public static bool ValidateMemberPropertyAndListenerUniTask()
+        {
+            return !ScriptGeneratorSetting.Instance.UseBindComponent;
         }
 
         private static void Generate(bool includeListener, bool isUniTask = false)
@@ -68,7 +92,7 @@ namespace TEngine.Editor.UI
                     }
                     else
                     {
-                        strFile.Append("\t[Window(UILayer.UI)]\n");
+                        strFile.Append($"\t[Window(UILayer.UI,location:\"{root.name}\")]\n");
                         strFile.Append("\tclass " + root.name + " : UIWindow\n");
                     }
                     
@@ -186,7 +210,7 @@ namespace TEngine.Editor.UI
 
             if (rule != null)
             {
-                componentName = rule.componentName;
+                componentName = rule.componentName.ToString();
             }
             
             bool isUIWidget = rule is { isUIWidget: true };
@@ -290,7 +314,9 @@ namespace TEngine.Editor.UI
             [MenuItem("GameObject/ScriptGenerator/About", priority = 49)]
             public static void About()
             {
-                GeneratorHelper welcomeWindow = (GeneratorHelper)EditorWindow.GetWindow(typeof(GeneratorHelper), false, "About");
+                var window = GetWindow<GeneratorHelper>();
+                window.titleContent = new GUIContent("About", EditorGUIUtility.IconContent("_Help").image);
+                window.minSize = new Vector2(400, 400);
             }
 
             public void Awake()
@@ -301,11 +327,15 @@ namespace TEngine.Editor.UI
             protected void OnGUI()
             {
                 GUILayout.BeginVertical();
-                foreach (var item in ScriptGeneratorSetting.GetScriptGenerateRule())
-                {
-                    GUILayout.Label(item.uiElementRegex + "：\t" + item.componentName);
-                }
 
+                foreach (var rule in ScriptGeneratorSetting.GetScriptGenerateRule())
+                {
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label(rule.uiElementRegex, GUILayout.Width(150));
+                    GUILayout.Label("<=>", GUILayout.Width(50));
+                    GUILayout.Label(rule.componentName.ToString(), GUILayout.Width(150));
+                    GUILayout.EndHorizontal();
+                }
                 GUILayout.EndVertical();
             }
         }

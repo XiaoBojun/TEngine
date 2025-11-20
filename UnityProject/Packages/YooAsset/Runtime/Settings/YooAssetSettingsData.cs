@@ -5,6 +5,14 @@ namespace YooAsset
 {
     public static class YooAssetSettingsData
     {
+#if UNITY_EDITOR
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void OnRuntimeInitialize()
+        {
+            _setting = null;
+        }
+#endif
+
         private static YooAssetSettings _setting = null;
         internal static YooAssetSettings Setting
         {
@@ -98,28 +106,6 @@ namespace YooAsset
         }
 
         #region 路径相关
-        /// <summary>
-        /// 获取YOO的Resources目录的加载路径
-        /// </summary>
-        internal static string GetYooResourcesLoadPath(string packageName, string fileName)
-        {
-            if (string.IsNullOrEmpty(Setting.DefaultYooFolderName))
-                return PathUtility.Combine(packageName, fileName);
-            else
-                return PathUtility.Combine(Setting.DefaultYooFolderName, packageName, fileName);
-        }
-
-        /// <summary>
-        /// 获取YOO的Resources目录的全路径
-        /// </summary>
-        internal static string GetYooResourcesFullPath()
-        {
-            if (string.IsNullOrEmpty(Setting.DefaultYooFolderName))
-                return $"Assets/Resources";
-            else
-                return $"Assets/Resources/{Setting.DefaultYooFolderName}";
-        }
-
         /// <summary>
         /// 获取YOO的编辑器下缓存文件根目录
         /// </summary>

@@ -12,71 +12,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a0dfbcd6854965bb6ae78627009a53, type: 3}
   m_Name: ScriptGeneratorSetting
   m_EditorClassIdentifier: 
-  _codePath: 
+  useBindComponent: 1
+  windowComponentSuffixName: DataComponent
+  widgetComponentSuffixName: WidgetDataComponent
+  _codePath: Assets/GameScripts/HotFix/GameLogic/UI
   _namespace: GameLogic
   _widgetName: item
-  CodeStyle: 0
+  CodeStyle: 1
   scriptGenerateRule:
   - uiElementRegex: m_go
-    componentName: GameObject
+    componentName: 0
     isUIWidget: 0
   - uiElementRegex: m_item
-    componentName: GameObject
+    componentName: 0
     isUIWidget: 0
   - uiElementRegex: m_tf
-    componentName: Transform
+    componentName: 1
     isUIWidget: 0
   - uiElementRegex: m_rect
-    componentName: RectTransform
+    componentName: 2
     isUIWidget: 0
   - uiElementRegex: m_text
-    componentName: Text
+    componentName: 3
     isUIWidget: 0
   - uiElementRegex: m_richText
-    componentName: RichTextItem
+    componentName: 4
     isUIWidget: 0
   - uiElementRegex: m_btn
-    componentName: Button
+    componentName: 5
     isUIWidget: 0
   - uiElementRegex: m_img
-    componentName: Image
+    componentName: 6
     isUIWidget: 0
   - uiElementRegex: m_rimg
-    componentName: RawImage
+    componentName: 7
     isUIWidget: 0
   - uiElementRegex: m_scrollBar
-    componentName: Scrollbar
+    componentName: 9
     isUIWidget: 0
   - uiElementRegex: m_scroll
-    componentName: ScrollRect
+    componentName: 8
     isUIWidget: 0
   - uiElementRegex: m_input
-    componentName: InputField
+    componentName: 10
     isUIWidget: 0
   - uiElementRegex: m_grid
-    componentName: GridLayoutGroup
+    componentName: 11
     isUIWidget: 0
   - uiElementRegex: m_hlay
-    componentName: HorizontalLayoutGroup
+    componentName: 12
     isUIWidget: 0
   - uiElementRegex: m_vlay
-    componentName: VerticalLayoutGroup
+    componentName: 13
     isUIWidget: 0
   - uiElementRegex: m_slider
-    componentName: Slider
-    isUIWidget: 0
-  - uiElementRegex: m_toggle
-    componentName: Toggle
+    componentName: 14
     isUIWidget: 0
   - uiElementRegex: m_group
-    componentName: ToggleGroup
+    componentName: 16
     isUIWidget: 0
   - uiElementRegex: m_curve
-    componentName: AnimationCurve
+    componentName: 17
     isUIWidget: 0
   - uiElementRegex: m_canvasGroup
-    componentName: CanvasGroup
+    componentName: 18
     isUIWidget: 0
   - uiElementRegex: m_tmp
-    componentName: TextMeshProUGUI
+    componentName: 19
     isUIWidget: 0

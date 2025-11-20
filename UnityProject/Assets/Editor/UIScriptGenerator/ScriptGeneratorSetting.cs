@@ -5,56 +5,7 @@ using UnityEngine;
 
 namespace TEngine.Editor.UI
 {
-    public enum UIFieldCodeStyle
-    {
-        /// <summary>
-        /// Field names start with underscore (e.g., _variable)
-        /// </summary>
-        [InspectorName("Field names start with underscore (e.g., _variable)")]
-        UnderscorePrefix,
-        
-        /// <summary>
-        /// Field names start with m_ prefix (e.g., m_variable)
-        /// </summary>
-        [InspectorName("Field names start with m_ prefix (e.g., m_variable)")]
-        MPrefix,
-    }
-    
-    [Serializable]
-    public class ScriptGenerateRuler
-    {
-        public string uiElementRegex;
-        public string componentName;
-        public bool isUIWidget = false;
-
-        public ScriptGenerateRuler(string uiElementRegex, string componentName, bool isUIWidget = false)
-        {
-            this.uiElementRegex = uiElementRegex;
-            this.componentName = componentName;
-            this.isUIWidget = isUIWidget;
-        }
-    }
-
-    [CustomPropertyDrawer(typeof(ScriptGenerateRuler))]
-    public class ScriptGenerateRulerDrawer : PropertyDrawer
-    {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-        {
-            EditorGUI.BeginProperty(position, label, property);
-            position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
-            var indent = EditorGUI.indentLevel;
-            EditorGUI.indentLevel = 0;
-            var uiElementRegexRect = new Rect(position.x, position.y, 120, position.height);
-            var componentNameRect = new Rect(position.x + 125, position.y, 150, position.height);
-            var isUIWidgetRect = new Rect(position.x + 325, position.y, 150, position.height);
-            EditorGUI.PropertyField(uiElementRegexRect, property.FindPropertyRelative("uiElementRegex"), GUIContent.none);
-            EditorGUI.PropertyField(componentNameRect, property.FindPropertyRelative("componentName"), GUIContent.none);
-            EditorGUI.PropertyField(isUIWidgetRect, property.FindPropertyRelative("isUIWidget"), GUIContent.none);
-            EditorGUI.indentLevel = indent;
-            EditorGUI.EndProperty();
-        }
-    }
-
+    [System.Serializable]
     [CreateAssetMenu(menuName = "TEngine/ScriptGeneratorSetting", fileName = "ScriptGeneratorSetting")]
     public class ScriptGeneratorSetting : ScriptableObject
     {
@@ -77,10 +28,14 @@ namespace TEngine.Editor.UI
             }
         }
 
+        [SerializeField] private bool useBindComponent;
+        [SerializeField] private string windowComponentSuffixName = "DataComponent";
+        [SerializeField] private string widgetComponentSuffixName = "WidgetDataComponent";
+
         // [FolderPath]
         // [LabelText("默认组件代码保存路径")]
         [SerializeField]
-        private string _codePath;
+        private string _codePath = "Assets/GameScripts/HotFix/GameLogic/UI";
 
         // [LabelText("绑定代码命名空间")]
         [SerializeField]
@@ -90,37 +45,42 @@ namespace TEngine.Editor.UI
         [SerializeField]
         private string _widgetName = "item";
 
+        public string WindowComponentSuffixName => windowComponentSuffixName;
+        public string WidgetComponentSuffixName => widgetComponentSuffixName;
+
+        public bool UseBindComponent => useBindComponent;
+
         public string CodePath => _codePath;
 
         public string Namespace => _namespace;
 
         public string WidgetName => _widgetName;
-        
+
         public UIFieldCodeStyle CodeStyle = UIFieldCodeStyle.UnderscorePrefix;
 
         [SerializeField]
         private List<ScriptGenerateRuler> scriptGenerateRule = new List<ScriptGenerateRuler>()
         {
-            new ScriptGenerateRuler("m_go", "GameObject"),
-            new ScriptGenerateRuler("m_item", "GameObject"),
-            new ScriptGenerateRuler("m_tf", "Transform"),
-            new ScriptGenerateRuler("m_rect", "RectTransform"),
-            new ScriptGenerateRuler("m_text", "Text"),
-            new ScriptGenerateRuler("m_richText", "RichTextItem"),
-            new ScriptGenerateRuler("m_btn", "Button"),
-            new ScriptGenerateRuler("m_img", "Image"),
-            new ScriptGenerateRuler("m_rimg", "RawImage"),
-            new ScriptGenerateRuler("m_scrollBar", "Scrollbar"),
-            new ScriptGenerateRuler("m_scroll", "ScrollRect"),
-            new ScriptGenerateRuler("m_input", "InputField"),
-            new ScriptGenerateRuler("m_grid", "GridLayoutGroup"),
-            new ScriptGenerateRuler("m_hlay", "HorizontalLayoutGroup"),
-            new ScriptGenerateRuler("m_vlay", "VerticalLayoutGroup"),
-            new ScriptGenerateRuler("m_slider", "Slider"),
-            new ScriptGenerateRuler("m_group", "ToggleGroup"),
-            new ScriptGenerateRuler("m_curve", "AnimationCurve"),
-            new ScriptGenerateRuler("m_canvasGroup", "CanvasGroup"),
-            new ScriptGenerateRuler("m_tmp","TextMeshProUGUI"),
+            new ScriptGenerateRuler("m_go", UIComponentName.GameObject),
+            new ScriptGenerateRuler("m_item", UIComponentName.GameObject),
+            new ScriptGenerateRuler("m_tf", UIComponentName.Transform),
+            new ScriptGenerateRuler("m_rect", UIComponentName.RectTransform),
+            new ScriptGenerateRuler("m_text", UIComponentName.Text),
+            new ScriptGenerateRuler("m_richText", UIComponentName.RichTextItem),
+            new ScriptGenerateRuler("m_btn", UIComponentName.Button),
+            new ScriptGenerateRuler("m_img", UIComponentName.Image),
+            new ScriptGenerateRuler("m_rimg", UIComponentName.RawImage),
+            new ScriptGenerateRuler("m_scrollBar", UIComponentName.Scrollbar),
+            new ScriptGenerateRuler("m_scroll", UIComponentName.ScrollRect),
+            new ScriptGenerateRuler("m_input", UIComponentName.InputField),
+            new ScriptGenerateRuler("m_grid", UIComponentName.GridLayoutGroup),
+            new ScriptGenerateRuler("m_hlay", UIComponentName.HorizontalLayoutGroup),
+            new ScriptGenerateRuler("m_vlay", UIComponentName.VerticalLayoutGroup),
+            new ScriptGenerateRuler("m_slider", UIComponentName.Slider),
+            new ScriptGenerateRuler("m_group", UIComponentName.ToggleGroup),
+            new ScriptGenerateRuler("m_curve", UIComponentName.AnimationCurve),
+            new ScriptGenerateRuler("m_canvasGroup", UIComponentName.CanvasGroup),
+            new ScriptGenerateRuler("m_tmp",UIComponentName.TextMeshProUGUI),
         };
 
         public List<ScriptGenerateRuler> ScriptGenerateRule => scriptGenerateRule;
@@ -181,7 +141,7 @@ namespace TEngine.Editor.UI
 
             return Instance.CodePath;
         }
-        
+
         public static string GetWidgetName()
         {
             if (Instance == null)
@@ -190,6 +150,35 @@ namespace TEngine.Editor.UI
             }
 
             return Instance.WidgetName;
+        }
+
+        public static string GetPrefixNameByCodeStyle(UIFieldCodeStyle style)
+        {
+            return style switch
+            {
+                UIFieldCodeStyle.UnderscorePrefix => "_",
+                UIFieldCodeStyle.MPrefix => "m_",
+                _ => "m_"
+            };
+        }
+
+        public static string GetUIComponentWithoutPrefixName(UIComponentName uiComponentName)
+        {
+            if (Instance.ScriptGenerateRule == null)
+            {
+                return string.Empty;
+            }
+
+            for (int i = 0; i < Instance.ScriptGenerateRule.Count; i++)
+            {
+                var rule = Instance.ScriptGenerateRule[i];
+
+                if (rule.componentName == uiComponentName)
+                {
+                    return rule.uiElementRegex.Substring(rule.uiElementRegex.IndexOf("_", StringComparison.Ordinal) + 1);
+                }
+            }
+            return string.Empty;
         }
     }
 }

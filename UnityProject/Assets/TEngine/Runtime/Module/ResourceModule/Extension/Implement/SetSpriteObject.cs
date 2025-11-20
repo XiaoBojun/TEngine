@@ -22,12 +22,12 @@ namespace TEngine
         [ShowInInspector]
 #endif
         private SetType _setType;
-        
+
 #if ODIN_INSPECTOR
         [ShowInInspector]
 #endif
         private Image _image;
-        
+
 #if ODIN_INSPECTOR
         [ShowInInspector]
 #endif
@@ -37,17 +37,21 @@ namespace TEngine
         [ShowInInspector]
 #endif
         private Sprite _sprite;
+        
+        public Object TargetObject { get; set; }
 
         public string Location { get; private set; }
 
         private bool _setNativeSize = false;
-        
+        Action<Image> _imageCallback;
+        Action<SpriteRenderer> _spriteCallback;
+
         private CancellationToken _cancellationToken;
 
         public void SetAsset(Object asset)
         {
             _sprite = (Sprite)asset;
-            
+
             if (_cancellationToken.IsCancellationRequested)
                 return;
 
@@ -58,10 +62,12 @@ namespace TEngine
                 {
                     _image.SetNativeSize();
                 }
+                _imageCallback?.Invoke(_image);
             }
             else if (_spriteRenderer != null)
             {
                 _spriteRenderer.sprite = _sprite;
+                _spriteCallback?.Invoke(_spriteRenderer);
             }
         }
 
@@ -88,9 +94,10 @@ namespace TEngine
             _sprite = null;
             _setType = SetType.None;
             _setNativeSize = false;
+            TargetObject = null;
         }
 
-        public static SetSpriteObject Create(Image image, string location, bool setNativeSize = false, CancellationToken cancellationToken = default)
+        public static SetSpriteObject Create(Image image, string location, bool setNativeSize = false, Action<Image> callback = null, CancellationToken cancellationToken = default)
         {
             SetSpriteObject item = MemoryPool.Acquire<SetSpriteObject>();
             item._image = image;
@@ -98,16 +105,20 @@ namespace TEngine
             item.Location = location;
             item._cancellationToken = cancellationToken;
             item._setType = SetType.Image;
+            item._imageCallback = callback;
+            item.TargetObject = image;
             return item;
         }
-        
-        public static SetSpriteObject Create(SpriteRenderer spriteRenderer, string location, CancellationToken cancellationToken = default)
+
+        public static SetSpriteObject Create(SpriteRenderer spriteRenderer, string location, Action<SpriteRenderer> callback = null, CancellationToken cancellationToken = default)
         {
             SetSpriteObject item = MemoryPool.Acquire<SetSpriteObject>();
             item._spriteRenderer = spriteRenderer;
             item.Location = location;
             item._cancellationToken = cancellationToken;
             item._setType = SetType.SpriteRender;
+            item._spriteCallback = callback;
+            item.TargetObject = spriteRenderer;
             return item;
         }
     }

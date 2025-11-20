@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using UnityEngine;
 
 namespace YooAsset
@@ -10,6 +11,7 @@ namespace YooAsset
             None,
             CheckExist,
             DownloadFile,
+            AbortDownload,
             LoadAssetBundle,
             CheckResult,
             Done,
@@ -48,17 +50,37 @@ namespace YooAsset
                 }
                 else
                 {
-                    _steps = ESteps.DownloadFile;
+                    if (_fileSystem.DisableOnDemandDownload)
+                    {
+                        _steps = ESteps.Done;
+                        Status = EOperationStatus.Failed;
+                        Error = $"The bundle not cached : {_bundle.BundleName}";
+                        YooLogger.Warning(Error);
+                    }
+                    else
+                    {
+                        _steps = ESteps.DownloadFile;
+                    }
                 }
             }
 
             if (_steps == ESteps.DownloadFile)
             {
-                // 注意：边玩边下下载器引用计数没有Release
+                // 中断下载
+                if (AbortDownloadFile)
+                {
+                    if (_downloadFileOp != null)
+                        _downloadFileOp.AbortOperation();
+                    _steps = ESteps.AbortDownload;
+                }
+            }
+
+            if (_steps == ESteps.DownloadFile)
+            {
                 if (_downloadFileOp == null)
                 {
-                    DownloadParam downloadParam = new DownloadParam(int.MaxValue, 60);
-                    _downloadFileOp = _fileSystem.DownloadFileAsync(_bundle, downloadParam);
+                    DownloadFileOptions options = new DownloadFileOptions(int.MaxValue);
+                    _downloadFileOp = _fileSystem.DownloadFileAsync(_bundle, options);
                     _downloadFileOp.StartOperation();
                     AddChildOperation(_downloadFileOp);
                 }
@@ -82,6 +104,23 @@ namespace YooAsset
                     Status = EOperationStatus.Failed;
                     Error = _downloadFileOp.Error;
                 }
+            }
+
+            if (_steps == ESteps.AbortDownload)
+            {
+                if (_downloadFileOp != null)
+                {
+                    if (IsWaitForAsyncComplete)
+                        _downloadFileOp.WaitForAsyncComplete();
+
+                    _downloadFileOp.UpdateOperation();
+                    if (_downloadFileOp.IsDone == false)
+                        return;
+                }
+
+                _steps = ESteps.Done;
+                Status = EOperationStatus.Failed;
+                Error = "Abort download file !";
             }
 
             if (_steps == ESteps.LoadAssetBundle)
@@ -163,11 +202,23 @@ namespace YooAsset
                 {
                     if (_bundle.Encrypted)
                     {
-                        _steps = ESteps.Done;
-                        Status = EOperationStatus.Failed;
-                        Error = $"Failed to load encrypted asset bundle file : {_bundle.BundleName}";
-                        YooLogger.Error(Error);
-                        return;
+                        var decryptResult = _fileSystem.LoadEncryptedAssetBundleFallback(_bundle);
+                        _assetBundle = decryptResult.Result;
+                        if (_assetBundle != null)
+                        {
+                            _steps = ESteps.Done;
+                            Result = new AssetBundleResult(_fileSystem, _bundle, _assetBundle, _managedStream);
+                            Status = EOperationStatus.Succeed;
+                            return;
+                        }
+                        else
+                        {
+                            _steps = ESteps.Done;
+                            Status = EOperationStatus.Failed;
+                            Error = $"Failed to load encrypted asset bundle file : {_bundle.BundleName}";
+                            YooLogger.Error(Error);
+                            return;
+                        }
                     }
 
                     // 注意：在安卓移动平台，华为和三星真机上有极小概率加载资源包失败。
@@ -215,9 +266,6 @@ namespace YooAsset
             {
                 if (ExecuteWhileDone())
                 {
-                    if (_downloadFileOp != null && _downloadFileOp.Status == EOperationStatus.Failed)
-                        YooLogger.Error($"Try load bundle {_bundle.BundleName} from remote !");
-
                     _steps = ESteps.Done;
                     break;
                 }
@@ -232,6 +280,7 @@ namespace YooAsset
             None,
             CheckExist,
             DownloadFile,
+            AbortDownload,
             LoadCacheRawBundle,
             Done,
         }
@@ -260,9 +309,30 @@ namespace YooAsset
             {
                 if (_fileSystem.Exists(_bundle))
                 {
-                    DownloadProgress = 1f;
-                    DownloadedBytes = _bundle.FileSize;
-                    _steps = ESteps.LoadCacheRawBundle;
+                    // 注意：缓存的原生文件的格式，可能会在业务端根据需求发生变动！
+                    // 注意：这里需要校验文件格式，如果不一致对本地文件进行修正！
+                    string filePath = _fileSystem.GetCacheBundleFileLoadPath(_bundle);
+                    if (File.Exists(filePath) == false)
+                    {
+                        try
+                        {
+                            var recordFileElement = _fileSystem.GetRecordFileElement(_bundle);
+                            File.Move(recordFileElement.DataFilePath, filePath);
+                            _steps = ESteps.LoadCacheRawBundle;
+                        }
+                        catch (Exception e)
+                        {
+                            _steps = ESteps.Done;
+                            Status = EOperationStatus.Failed;
+                            Error = $"Faild rename raw data file : {e.Message}";
+                        }
+                    }
+                    else
+                    {
+                        DownloadProgress = 1f;
+                        DownloadedBytes = _bundle.FileSize;
+                        _steps = ESteps.LoadCacheRawBundle;
+                    }
                 }
                 else
                 {
@@ -272,11 +342,21 @@ namespace YooAsset
 
             if (_steps == ESteps.DownloadFile)
             {
-                // 注意：边玩边下下载器引用计数没有Release
+                // 中断下载
+                if (AbortDownloadFile)
+                {
+                    if (_downloadFileOp != null)
+                        _downloadFileOp.AbortOperation();
+                    _steps = ESteps.AbortDownload;
+                }
+            }
+
+            if (_steps == ESteps.DownloadFile)
+            {
                 if (_downloadFileOp == null)
                 {
-                    DownloadParam downloadParam = new DownloadParam(int.MaxValue, 60);
-                    _downloadFileOp = _fileSystem.DownloadFileAsync(_bundle, downloadParam);
+                    DownloadFileOptions options = new DownloadFileOptions(int.MaxValue);
+                    _downloadFileOp = _fileSystem.DownloadFileAsync(_bundle, options);
                     _downloadFileOp.StartOperation();
                     AddChildOperation(_downloadFileOp);
                 }
@@ -300,6 +380,23 @@ namespace YooAsset
                     Status = EOperationStatus.Failed;
                     Error = _downloadFileOp.Error;
                 }
+            }
+
+            if (_steps == ESteps.AbortDownload)
+            {
+                if (_downloadFileOp != null)
+                {
+                    if (IsWaitForAsyncComplete)
+                        _downloadFileOp.WaitForAsyncComplete();
+
+                    _downloadFileOp.UpdateOperation();
+                    if (_downloadFileOp.IsDone == false)
+                        return;
+                }
+
+                _steps = ESteps.Done;
+                Status = EOperationStatus.Failed;
+                Error = "Abort download file !";
             }
 
             if (_steps == ESteps.LoadCacheRawBundle)
@@ -326,10 +423,6 @@ namespace YooAsset
             {
                 if (ExecuteWhileDone())
                 {
-                    //TODO 拷贝本地文件失败也会触发该错误！
-                    if (_downloadFileOp != null && _downloadFileOp.Status == EOperationStatus.Failed)
-                        YooLogger.Error($"Try load bundle {_bundle.BundleName} from remote !");
-
                     _steps = ESteps.Done;
                     break;
                 }

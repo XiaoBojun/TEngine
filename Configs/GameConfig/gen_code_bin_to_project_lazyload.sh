@@ -11,6 +11,8 @@ export CODE_OUTPATH="${WORKSPACE}/UnityProject/Assets/GameScripts/HotFix/GamePro
 
 cp -R "${CONF_ROOT}/CustomTemplate/ConfigSystem.cs" \
    "${WORKSPACE}/UnityProject/Assets/GameScripts/HotFix/GameProto/ConfigSystem.cs"
+cp -R "${CONF_ROOT}/CustomTemplate/ExternalTypeUtil.cs" \
+    "${WORKSPACE}/UnityProject/Assets/GameScripts/HotFix/GameProto/ExternalTypeUtil.cs"
 
 dotnet "${LUBAN_DLL}" \
     -t client \
@@ -18,8 +20,6 @@ dotnet "${LUBAN_DLL}" \
     -d bin \
     --conf "${CONF_ROOT}/luban.conf" \
     --customTemplateDir "${CONF_ROOT}/CustomTemplate/CustomTemplate_Client_LazyLoad" \
+    -x code.lineEnding=crlf \
     -x outputCodeDir="${CODE_OUTPATH}" \
     -x outputDataDir="${DATA_OUTPATH}"
-
-echo "操作完成，按任意键退出..."
-read -k1

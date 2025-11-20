@@ -55,7 +55,8 @@ namespace TEngine
         /// 初始化操作。
         /// </summary>
         /// <param name="customPackageName">资源包名称。</param>
-        UniTask<InitializationOperation> InitPackage(string customPackageName);
+        /// <param name="needInitMainFest">是否需要直接初始化资源清单。（单机OtherPackage使用）</param>
+        UniTask<InitializationOperation> InitPackage(string customPackageName, bool needInitMainFest = false);
 
         /// <summary>
         /// 默认资源包名称。
@@ -76,7 +77,12 @@ namespace TEngine
         /// 备用热更URL。
         /// </summary>
         string FallbackHostServerURL { get; set; }
-
+        
+        /// <summary>
+        /// WebGL平台加载本地资源/加载远程资源。
+        /// </summary>
+        LoadResWayWebGL LoadResWayWebGL { get; set; }
+        
         /// <summary>
         /// 获取或设置资源对象池自动释放可释放对象的间隔秒数。
         /// </summary>
@@ -206,22 +212,6 @@ namespace TEngine
         /// <param name="packageName">指定资源包的名称。不传使用默认资源包</param>
         /// <typeparam name="T">要加载资源的类型。</typeparam>
         UniTaskVoid LoadAsset<T>(string location, Action<T> callback, string packageName = "") where T : UnityEngine.Object;
-
-        /// <summary>
-        /// 同步加载子资源对象。
-        /// </summary>
-        /// <typeparam name="TObject">资源类型。</typeparam>
-        /// <param name="location">资源的定位地址。</param>
-        /// <param name="packageName">指定资源包的名称。不传使用默认资源包</param>
-        public TObject[] LoadSubAssetsSync<TObject>(string location, string packageName = "") where TObject : UnityEngine.Object;
-
-        /// <summary>
-        /// 异步加载子资源对象。
-        /// </summary>
-        /// <typeparam name="TObject">资源类型。</typeparam>
-        /// <param name="location">资源的定位地址。</param>
-        /// <param name="packageName">指定资源包的名称。不传使用默认资源包</param>
-        public UniTask<TObject[]> LoadSubAssetsAsync<TObject>(string location, string packageName = "") where TObject : UnityEngine.Object;
 
         /// <summary>
         /// 异步加载资源。

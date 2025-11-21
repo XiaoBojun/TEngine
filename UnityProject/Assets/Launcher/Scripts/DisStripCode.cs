@@ -20,7 +20,7 @@ public class DisStripCode : MonoBehaviour
 
         RegisterType<Rigidbody>();
         RegisterType<Rigidbody2D>();
-        
+
         RegisterType<Ray>();
         RegisterType<Ray2D>();
 
@@ -42,7 +42,10 @@ public class DisStripCode : MonoBehaviour
         foreach (var _ in WebCamTexture.devices)
         {
         } 
-        */ 
+        */
+#endif
+#if FANTASY_UNITY
+
 #endif
     }
 

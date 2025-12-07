@@ -10,10 +10,23 @@
 
   <ItemGroup>
     <PackageReference Include="Fantasy-Net" Version="*" />
+    <PackageReference Include="NLog" Version="6.0.6" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Gate\Component\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Fantasy.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Fantasy.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

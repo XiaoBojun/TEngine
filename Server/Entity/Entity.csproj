@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fantasy-Net" Version="*" />
+    <PackageReference Include="Fantasy-Net" Version="2025.2.1422" />
     <PackageReference Include="NLog" Version="6.0.6" />
   </ItemGroup>
 

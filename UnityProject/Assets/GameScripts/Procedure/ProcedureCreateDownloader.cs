@@ -33,7 +33,7 @@ namespace Procedure
 
             Log.Info("创建补丁下载器");
 
-            LauncherMgr.Show(UIDefine.UILoadUpdate, $"创建补丁下载器...");
+            LauncherMgr.ShowUI<LoadUpdateUI>($"创建补丁下载器...");
 
             CreateDownloader().Forget();
         }
@@ -63,9 +63,8 @@ namespace Procedure
                 sizeMb = Mathf.Clamp(sizeMb, 0.1f, float.MaxValue);
                 _totalSizeMb = sizeMb.ToString("f1");
 
-                LauncherMgr.ShowMessageBox($"Found update patch files, Total count {_totalDownloadCount} Total size {_totalSizeMb}MB", MessageShowType.TwoButton,
-                    LoadStyle.StyleEnum.Style_StartUpdate_Notice
-                    , StartDownFile, Application.Quit);
+                LauncherMgr.ShowMessageBox($"Found update patch files, Total count {_totalDownloadCount} Total size {_totalSizeMb}MB",
+                    StartDownFile, Application.Quit);
             }
         }
 

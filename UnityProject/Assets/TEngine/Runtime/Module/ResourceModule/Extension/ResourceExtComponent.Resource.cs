@@ -82,8 +82,9 @@ namespace TEngine
         /// 通过Unity对象加载资源。
         /// </summary>
         /// <param name="setAssetObject">ISetAssetObject。</param>
+        /// <param name="cancellationToken">CancellationToken。</param>
         /// <typeparam name="T">Unity对象类型。</typeparam>
-        public async UniTaskVoid SetAssetByResources<T>(ISetAssetObject setAssetObject) where T : UnityEngine.Object
+        public async UniTaskVoid SetAssetByResources<T>(ISetAssetObject setAssetObject, CancellationToken cancellationToken) where T : UnityEngine.Object
         {
             var target = setAssetObject.TargetObject;
             var location = setAssetObject.Location;
@@ -97,16 +98,16 @@ namespace TEngine
             CancelAndCleanupOldRequest(target);
 
             // 创建新的加载状态
-            var cts = new CancellationTokenSource();
+            var linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
             var loadingState = MemoryPool.Acquire<LoadingState>();
-            loadingState.Cts = cts;
+            loadingState.Cts = linkedTokenSource;
             loadingState.Location = location;
             _loadingStates[target] = loadingState;
 
             try
             {
                 // 等待其他可能正在进行的加载。
-                await TryWaitingLoading(location).AttachExternalCancellation(cts.Token);
+                await TryWaitingLoading(location).AttachExternalCancellation(linkedTokenSource.Token);
 
                 // 再次检查是否被新请求替换。
                 if (!IsCurrentLocation(target, location))
@@ -137,7 +138,13 @@ namespace TEngine
                         return;
                     }
 
-                    _resourceModule.LoadAssetAsync(location, typeof(T), 0, _loadAssetCallbacks, setAssetObject);
+                    T resource = await _resourceModule.LoadAssetAsync<T>(location, linkedTokenSource.Token);
+                    if (resource != null)
+                    {
+                        _loadAssetCallbacks?.LoadAssetSuccessCallback.Invoke(location,resource, 0f, setAssetObject);
+                        
+                    }
+                    _assetLoadingList.Remove(location);
                 }
             }
             catch (OperationCanceledException)

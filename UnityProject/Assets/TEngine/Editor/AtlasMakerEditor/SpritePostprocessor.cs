@@ -12,6 +12,96 @@ namespace TEngine.Editor
     {
         private static List<string> m_resourcesToDelete = new List<string>();
 
+        // 文件名缓存：key=小写文件名(不含扩展名), value=完整路径列表
+        private static Dictionary<string, HashSet<string>> s_fileNameCache;
+        private static bool s_cacheInitialized = false;
+
+        /// <summary>
+        /// 初始化文件名缓存
+        /// </summary>
+        private static void EnsureCacheInitialized()
+        {
+            if (s_cacheInitialized && s_fileNameCache != null) return;
+
+            s_fileNameCache = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
+            var config = AtlasConfiguration.Instance;
+
+            var tempRootDirArr = new List<string>(config.sourceAtlasRootDir);
+            tempRootDirArr.AddRange(config.rootChildAtlasDir);
+            tempRootDirArr.AddRange(config.singleAtlasDir);
+
+            foreach (var rootDir in tempRootDirArr)
+            {
+                if (string.IsNullOrEmpty(rootDir) || !Directory.Exists(rootDir)) continue;
+
+                var files = Directory.GetFiles(rootDir, "*.*", SearchOption.AllDirectories)
+                    .Where(CheckIsValidImageFile);
+
+                foreach (var file in files)
+                {
+                    var fileName = Path.GetFileNameWithoutExtension(file).ToLowerInvariant();
+                    var normalizedPath = Path.GetFullPath(file).Replace("\\", "/");
+
+                    if (!s_fileNameCache.TryGetValue(fileName, out var pathSet))
+                    {
+                        pathSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+                        s_fileNameCache[fileName] = pathSet;
+                    }
+                    pathSet.Add(normalizedPath);
+                }
+            }
+
+            s_cacheInitialized = true;
+        }
+
+        /// <summary>
+        /// 重置缓存（配置变更时调用）
+        /// </summary>
+        public static void ResetCache()
+        {
+            s_cacheInitialized = false;
+            s_fileNameCache?.Clear();
+            s_fileNameCache = null;
+        }
+
+        /// <summary>
+        /// 从缓存中移除文件
+        /// </summary>
+        private static void RemoveFromCache(string assetPath)
+        {
+            if (s_fileNameCache == null) return;
+
+            var fileName = Path.GetFileNameWithoutExtension(assetPath).ToLowerInvariant();
+            var normalizedPath = Path.GetFullPath(assetPath).Replace("\\", "/");
+
+            if (s_fileNameCache.TryGetValue(fileName, out var pathSet))
+            {
+                pathSet.Remove(normalizedPath);
+                if (pathSet.Count == 0)
+                {
+                    s_fileNameCache.Remove(fileName);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 添加文件到缓存
+        /// </summary>
+        private static void AddToCache(string assetPath)
+        {
+            if (s_fileNameCache == null) return;
+
+            var fileName = Path.GetFileNameWithoutExtension(assetPath).ToLowerInvariant();
+            var normalizedPath = Path.GetFullPath(assetPath).Replace("\\", "/");
+
+            if (!s_fileNameCache.TryGetValue(fileName, out var pathSet))
+            {
+                pathSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+                s_fileNameCache[fileName] = pathSet;
+            }
+            pathSet.Add(normalizedPath);
+        }
+
         private static void OnPostprocessAllAssets(
             string[] importedAssets,
             string[] deletedAssets,
@@ -23,8 +113,17 @@ namespace TEngine.Editor
 
             if (!config.autoGenerate) return;
 
+            // 计算需要处理的资源总数（用于进度显示）
+            int totalAssets = (importedAssets?.Length ?? 0) + (deletedAssets?.Length ?? 0) + (movedAssets?.Length ?? 0);
+            bool showProgress = totalAssets > 10; // 超过10个资源时显示进度条
+
             try
             {
+                if (showProgress)
+                {
+                    EditorUtility.DisplayProgressBar("处理图集资源", "正在分析资源变更...", 0f);
+                }
+
                 ProcessAssetChanges(
                     importedAssets: importedAssets,
                     deletedAssets: deletedAssets,
@@ -38,6 +137,11 @@ namespace TEngine.Editor
             }
             finally
             {
+                if (showProgress)
+                {
+                    EditorUtility.ClearProgressBar();
+                }
+
                 bool isDelete = m_resourcesToDelete.Count > 0;
                 foreach (var res in m_resourcesToDelete)
                 {
@@ -46,8 +150,8 @@ namespace TEngine.Editor
                 if (isDelete)
                 {
                     Debug.LogError($"<color=red>针对 {config.sourceAtlasRootDir} 路径下资源</color>\n<color=red>移除了空格和同名资源，请检查重新合入相关资源</color>");
+                    AssetDatabase.Refresh();
                 }
-                AssetDatabase.Refresh();
             }
         }
 
@@ -57,17 +161,21 @@ namespace TEngine.Editor
             string[] movedAssets,
             string[] movedFromPaths)
         {
-            ProcessAssets(importedAssets, (path) =>
-            {
-                EditorSpriteSaveInfo.OnImportSprite(path);
-                LogProcessed("[Added]", path);
-            });
-
+            // 处理删除的资源（先处理删除，再处理导入）
             ProcessAssets(deletedAssets, (path) =>
             {
+                RemoveFromCache(path);
                 EditorSpriteSaveInfo.OnDeleteSprite(path);
                 LogProcessed("[Deleted]", path);
-            });
+            }, isDelete: true);
+
+            // 处理导入的资源
+            ProcessAssets(importedAssets, (path) =>
+            {
+                AddToCache(path);
+                EditorSpriteSaveInfo.OnImportSprite(path);
+                LogProcessed("[Added]", path);
+            }, isDelete: false);
 
             ProcessMovedAssets(movedFromPaths, movedAssets);
         }
@@ -142,45 +250,48 @@ namespace TEngine.Editor
 
         private static bool CheckDuplicateAssetName(string assetPath)
         {
-            var currentFileName = Path.GetFileNameWithoutExtension(assetPath);
+            // 确保缓存已初始化
+            EnsureCacheInitialized();
 
-            string rootDir = "";
-            var tempRootDirArr = new List<string>(AtlasConfiguration.Instance.sourceAtlasRootDir);
-            tempRootDirArr.AddRange(AtlasConfiguration.Instance.rootChildAtlasDir);
-            foreach (var rootPath in tempRootDirArr)
-            {
-                var tempPath = rootPath.Replace("\\", "/");
-                if (!assetPath.StartsWith(tempPath))
-                {
-                    continue;
-                }
-                rootDir = tempPath;
-            }
-            // var rootDir = AtlasConfiguration.Instance.sourceAtlasRootDir;
-            if (string.IsNullOrEmpty(rootDir))
-            {
-                return false;
-            }
-
-            // 获取当前目录下所有图片文件
-            var filesInDirectory = Directory.GetFiles(rootDir, "*.*", SearchOption.AllDirectories)
-                .Where(CheckIsValidImageFile)
-                .ToArray();
+            var currentFileName = Path.GetFileNameWithoutExtension(assetPath).ToLowerInvariant();
             var normalizedCurrentPath = Path.GetFullPath(assetPath).Replace("\\", "/");
-            foreach (var file in filesInDirectory)
+
+            // 使用缓存快速查找同名文件
+            if (s_fileNameCache.TryGetValue(currentFileName, out var existingPaths))
             {
-                var normalizedFile = Path.GetFullPath(file).Replace("\\", "/");
-                if (normalizedFile.Equals(normalizedCurrentPath, StringComparison.OrdinalIgnoreCase))
+                // 收集需要移除的过期路径
+                List<string> pathsToRemove = null;
+
+                foreach (var existingPath in existingPaths)
                 {
-                    continue; // 跳过自身
+                    // 跳过自身
+                    if (existingPath.Equals(normalizedCurrentPath, StringComparison.OrdinalIgnoreCase))
+                    {
+                        continue;
+                    }
+
+                    // 确保文件确实存在（防止缓存过期）
+                    if (File.Exists(existingPath))
+                    {
+                        m_resourcesToDelete.Add(assetPath);
+                        Debug.LogError($"<color=red>发现同名资源冲突: 合入资源: {assetPath} 存在资源: {existingPath}</color>");
+                        return true;
+                    }
+                    else
+                    {
+                        // 文件不存在，标记为需要移除
+                        pathsToRemove ??= new List<string>();
+                        pathsToRemove.Add(existingPath);
+                    }
                 }
 
-                var otherFileName = Path.GetFileNameWithoutExtension(file);
-                if (string.Equals(currentFileName, otherFileName, StringComparison.OrdinalIgnoreCase))
+                // 遍历结束后再移除过期路径
+                if (pathsToRemove != null)
                 {
-                    m_resourcesToDelete.Add(assetPath);
-                    Debug.LogError($"<color=red>发现同名资源冲突: 合入资源: {assetPath} 存在资源: {file}</color>");
-                    return true;
+                    foreach (var path in pathsToRemove)
+                    {
+                        existingPaths.Remove(path);
+                    }
                 }
             }
 
@@ -201,6 +312,7 @@ namespace TEngine.Editor
             {
                 if (ShouldProcessAsset(oldPaths[i]))
                 {
+                    RemoveFromCache(oldPaths[i]);
                     EditorSpriteSaveInfo.OnDeleteSprite(oldPaths[i]);
                     LogProcessed("[Moved From]", oldPaths[i]);
                     EditorSpriteSaveInfo.MarkParentAtlasesDirty(oldPaths[i], true);
@@ -212,6 +324,7 @@ namespace TEngine.Editor
                     {
                         continue;
                     }
+                    AddToCache(newPaths[i]);
                     EditorSpriteSaveInfo.OnImportSprite(newPaths[i]);
                     LogProcessed("[Moved To]", newPaths[i]);
                     EditorSpriteSaveInfo.MarkParentAtlasesDirty(newPaths[i], false);

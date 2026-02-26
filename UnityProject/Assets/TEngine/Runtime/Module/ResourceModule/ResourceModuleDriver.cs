@@ -102,7 +102,7 @@ namespace TEngine
         /// 是否支持边玩边下载。
         /// </summary>
         [SerializeField]
-        private bool updatableWhilePlaying = false;
+        public bool updatableWhilePlaying = false;
 
         /// <summary>
         /// 是否支持边玩边下载。
@@ -114,6 +114,12 @@ namespace TEngine
         /// </summary>
         [SerializeField]
         public long milliseconds = 30;
+
+        /// <summary>
+        /// 自动释放资源引用计数为0的资源包
+        /// </summary>
+        [SerializeField]
+        public bool autoUnloadBundleWhenUnused = false;
 
         public int downloadingMaxNum = 10;
 
@@ -248,6 +254,7 @@ namespace TEngine
             _resourceModule.PlayMode = PlayMode;
             _resourceModule.EncryptionType = encryptionType;
             _resourceModule.Milliseconds = milliseconds;
+            _resourceModule.AutoUnloadBundleWhenUnused = autoUnloadBundleWhenUnused;
             _resourceModule.HostServerURL = Settings.UpdateSetting.GetResDownLoadPath();
             _resourceModule.FallbackHostServerURL = Settings.UpdateSetting.GetFallbackResDownLoadPath();
             _resourceModule.LoadResWayWebGL=Settings.UpdateSetting.GetLoadResWayWebGL();

@@ -10,214 +10,124 @@ namespace Launcher
     /// </summary>
     public static class LauncherMgr
     {
-        private static Transform _uiRoot;
-        private static readonly Dictionary<string, string> _uiList = new Dictionary<string, string>();
-        private static readonly Dictionary<string, UIBase> _uiMap = new Dictionary<string, UIBase>();
+        private static string UI_ROOT_PATH = "UIRoot/UICanvas";
+        private static string UI_WINDOW_PATH = "UIWindow/";
+        private static Transform m_uiRoot;
+        private static readonly Dictionary<string, UIBase> m_uiMapDict = new Dictionary<string, UIBase>(4);
 
-        /// <summary>
-        /// 初始化根节点。
-        /// </summary>
         public static void Initialize()
         {
-            _uiRoot = GameObject.Find("UIRoot/UICanvas")?.transform;
-            if (_uiRoot == null)
+            m_uiRoot = GameObject.Find(UI_ROOT_PATH)?.transform;
+
+            if (m_uiRoot == null)
             {
-                Debug.LogError("Failed to Find UIRoot. Please check the resource path");
+                Debug.LogError($"======== 找不到 UIRoot 节点 请检查资源路径或Hierarchy窗口中的游戏对象 ========");
                 return;
             }
 
-            RegisterUI();
+            Debug.Log("======== 初始化 LauncherMgr 完成 ========");
         }
 
-        public static void RegisterUI()
+        public static void ShowUI<T>(object param = null) where T : UIBase, new()
         {
-            UIDefine.RegisterUI(_uiList);
-        }
-
-        /// <summary>
-        /// show ui
-        /// </summary>
-        /// <param name="uiInfo">对应的ui的名称。</param>
-        /// <param name="param">参数。</param>
-        public static void Show(string uiInfo, object param = null)
-        {
-            if (string.IsNullOrEmpty(uiInfo))
+            string uiName = typeof(T).Name;
+            if (string.IsNullOrEmpty(uiName))
             {
+                Debug.LogWarning($"======== LauncherMgr.ShowUI UIName 为空 ========");
                 return;
             }
 
-            if (!_uiList.ContainsKey(uiInfo))
+            if (!m_uiMapDict.TryGetValue(uiName, out var uiBase))
             {
-                Debug.LogError($"not define ui:{uiInfo}");
-                return;
-            }
-
-            GameObject ui = null;
-            if (!_uiMap.ContainsKey(uiInfo))
-            {
-                Object obj = Resources.Load(_uiList[uiInfo]);
+                Object obj = Resources.Load(UI_WINDOW_PATH + uiName);
                 if (obj != null)
                 {
-                    ui = Object.Instantiate(obj) as GameObject;
-                    if (ui != null)
+                    var uiWindow = Object.Instantiate(obj) as GameObject;
+
+                    if (uiWindow != null)
                     {
-                        ui.transform.SetParent(_uiRoot.transform);
-                        ui.transform.localScale = Vector3.one;
-                        ui.transform.localRotation = Quaternion.identity;
-                        ui.transform.localPosition = Vector3.zero;
-                        RectTransform rect = ui.GetComponent<RectTransform>();
-                        rect.sizeDelta = Vector2.zero;
+                        uiWindow.transform.SetParent(m_uiRoot.transform);
+                        uiWindow.name = uiName;
+                        uiWindow.transform.localScale = Vector3.one;
+                        uiWindow.transform.localPosition = Vector3.zero;
+                        uiWindow.transform.localRotation = Quaternion.identity;
+                        RectTransform rectTransform = uiWindow.GetComponent<RectTransform>();
+                        rectTransform.sizeDelta = Vector2.zero;
+
+                        uiBase = new T();
+                        uiBase.gameObject = uiWindow;
+                        uiBase?.CallScriptGenerator();
+                        m_uiMapDict[uiName] = uiBase;
                     }
                 }
-
-                UIBase component = ui.GetComponent<UIBase>();
-                if (component != null)
-                {
-                    _uiMap.Add(uiInfo, component);
-                }
             }
-
-            _uiMap[uiInfo].gameObject.SetActive(true);
-            if (param != null)
-            {
-                UIBase component = _uiMap[uiInfo].GetComponent<UIBase>();
-                if (component != null)
-                {
-                    component.OnEnter(param);
-                }
-            }
+            uiBase?.Show();
+            uiBase?.OnInit(param);
         }
 
-        /// <summary>
-        /// 隐藏ui对象。
-        /// </summary>
-        /// <param name="uiName">对应的ui的名称。</param>
-        public static void Hide(string uiName)
+        public static void CloseUI(UIBase uiWindow)
+        {
+            CloseUI(uiWindow.GetType().Name);
+        }
+
+        public static void CloseUI<T>() where T : UIBase
+        {
+            CloseUI(typeof(T).Name);
+        }
+
+        public static void CloseUI(string uiName)
         {
             if (string.IsNullOrEmpty(uiName))
             {
+                Debug.LogWarning($"======== LauncherMgr.HideUI UIName 为空 ========");
                 return;
             }
 
-            if (!_uiMap.TryGetValue(uiName, out var ui))
+            if (!m_uiMapDict.TryGetValue(uiName, out var uiWindow))
             {
                 return;
             }
 
-            ui.gameObject.SetActive(false);
-            Object.DestroyImmediate(_uiMap[uiName].gameObject);
-            _uiMap.Remove(uiName);
+            uiWindow?.Hide();
+            Object.DestroyImmediate(uiWindow?.gameObject);
+            m_uiMapDict.Remove(uiName);
         }
 
-        /// <summary>
-        /// 获取显示的ui对象。
-        /// </summary>
-        /// <param name="uiName">对应的ui的名称。</param>
-        /// <returns></returns>
+        public static T GetActiveUI<T>() where T : UIBase
+        {
+            return GetActiveUI(typeof(T).Name) as T;
+        }
+
         public static UIBase GetActiveUI(string uiName)
         {
-            return _uiMap.GetValueOrDefault(uiName);
+            return m_uiMapDict.GetValueOrDefault(uiName);
         }
 
-        /// <summary>
-        /// 隐藏所有热更相关UI。
-        /// </summary>
-        public static void HideAll()
+        public static void HideAllUI()
         {
-            foreach (var item in _uiMap)
+            foreach (var ui in m_uiMapDict.Values)
             {
-                if (item.Value && item.Value.gameObject)
-                {
-                    Object.Destroy(item.Value.gameObject);
-                }
+                ui?.Hide();
+                Object.Destroy(ui?.gameObject);
             }
-
-            _uiMap.Clear();
+            m_uiMapDict.Clear();
         }
 
-        #region 流程调用方法
+        #region UI调用
 
-        /// <summary>
-        /// 显示提示框，目前最多支持三个按钮
-        /// </summary>
-        /// <param name="desc">描述</param>
-        /// <param name="showtype">类型（MessageShowType）</param>
-        /// <param name="style">StyleEnum</param>
-        /// <param name="onOk">点击事件</param>
-        /// <param name="onCancel">取消事件</param>
-        /// <param name="onPackage">更新事件</param>
-        public static void ShowMessageBox(string desc, MessageShowType showtype = MessageShowType.OneButton,
-            LoadStyle.StyleEnum style = LoadStyle.StyleEnum.Style_Default,
-            Action onOk = null,
-            Action onCancel = null,
-            Action onPackage = null)
+        public static void ShowMessageBox(string desc, Action onConfirm = null,
+            Action onCancel = null, Action onUpdate = null)
         {
-            LauncherMgr.Show(UIDefine.UILoadTip, desc);
-            var ui = LauncherMgr.GetActiveUI(UIDefine.UILoadTip) as UILoadTip;
-            if (ui == null)
-            {
-                return;
-            }
-
-            ui.OnOk = onOk;
-            ui.OnCancel = onCancel;
-            ui.Showtype = showtype;
-            ui.OnEnter(desc);
-
-            var loadStyleUI = ui.GetComponent<LoadStyle>();
-            if (loadStyleUI)
-            {
-                loadStyleUI.SetStyle(style);
-            }
+            ShowUI<LoadTipsUI>(desc);
+            var ui = GetActiveUI<LoadTipsUI>();
+            ui?.SetAllCallback(onConfirm, onUpdate, onCancel);
         }
 
-        /// <summary>
-        /// 刷新UI版本号。
-        /// </summary>
-        /// <param name="appId">AppID。</param>
-        /// <param name="resId">资源ID。</param>
-        public static void RefreshVersion(string appId, string resId)
+        public static void RefreshProgress(float progress)
         {
-            LauncherMgr.Show(UIDefine.UILoadUpdate);
-            var ui = LauncherMgr.GetActiveUI(UIDefine.UILoadUpdate) as UILoadUpdate;
-            if (ui == null)
-            {
-                return;
-            }
-
-            ui.OnRefreshVersion(appId, resId);
-        }
-
-        /// <summary>
-        /// 更新UI文本。
-        /// </summary>
-        /// <param name="label">文本ID。</param>
-        public static void UpdateUILabel(string label)
-        {
-            LauncherMgr.Show(UIDefine.UILoadUpdate);
-            var ui = LauncherMgr.GetActiveUI(UIDefine.UILoadUpdate) as UILoadUpdate;
-            if (ui == null)
-            {
-                return;
-            }
-
-            ui.OnEnter(label);
-        }
-
-        /// <summary>
-        /// 更新UI进度。
-        /// </summary>
-        /// <param name="progress">当前进度。</param>
-        public static void UpdateUIProgress(float progress)
-        {
-            LauncherMgr.Show(UIDefine.UILoadUpdate);
-            var ui = LauncherMgr.GetActiveUI(UIDefine.UILoadUpdate) as UILoadUpdate;
-            if (ui == null)
-            {
-                return;
-            }
-
-            ui.OnUpdateUIProgress(progress);
+            ShowUI<LoadUpdateUI>();
+            var ui = GetActiveUI<LoadUpdateUI>();
+            ui?.RefreshProgress(progress);
         }
 
         #endregion

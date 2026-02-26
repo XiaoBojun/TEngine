@@ -41,7 +41,7 @@ namespace Procedure
 
             Log.Info("开始下载更新文件！");
 
-            LauncherMgr.Show(UIDefine.UILoadUpdate, "开始下载更新文件...");
+            LauncherMgr.ShowUI<LoadUpdateUI>("开始下载更新文件...");
 
             BeginDownload().Forget();
         }
@@ -66,8 +66,6 @@ namespace Procedure
         private void OnDownloadErrorCallback(DownloadErrorData downloadErrorData)
         {
             LauncherMgr.ShowMessageBox($"Failed to download file : {downloadErrorData.FileName}",
-                MessageShowType.TwoButton,
-                LoadStyle.StyleEnum.Style_Default,
                 () => { ChangeState<ProcedureCreateDownloader>(_procedureOwner); }, UnityEngine.Application.Quit);
         }
 
@@ -85,8 +83,8 @@ namespace Procedure
                 GetRemainingTime(downloadUpdateData.TotalDownloadBytes, downloadUpdateData.CurrentDownloadBytes,
                     CurrentSpeed));
 
-            LauncherMgr.UpdateUIProgress(_resourceModule.Downloader.Progress);
-            LauncherMgr.Show(UIDefine.UILoadUpdate, $"{line1}\n{line2}\n{line3}");
+            LauncherMgr.RefreshProgress(_resourceModule.Downloader.Progress);
+            LauncherMgr.ShowUI<LoadUpdateUI>($"{line1}\n{line2}\n{line3}");
 
             Log.Info($"{line1} {line2} {line3}");
         }

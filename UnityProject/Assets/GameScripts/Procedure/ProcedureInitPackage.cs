@@ -58,7 +58,7 @@ namespace Procedure
                              playMode == EPlayMode.WebPlayMode)
                     {
                         // 打开启动UI。
-                        LauncherMgr.Show(UIDefine.UILoadUpdate);
+                        LauncherMgr.ShowUI<LoadUpdateUI>();
 
                         Log.Info("Updatable resource mode detected.");
                         ChangeState<ProcedureInitResources>(procedureOwner);
@@ -71,18 +71,16 @@ namespace Procedure
                 else
                 {
                     // 打开启动UI。
-                    LauncherMgr.Show(UIDefine.UILoadUpdate);
+                    LauncherMgr.ShowUI<LoadUpdateUI>();
 
                     Log.Error($"{initializationOperation.Error}");
 
                     // 打开启动UI。
-                    LauncherMgr.Show(UIDefine.UILoadUpdate, $"资源初始化失败！");
+                    LauncherMgr.ShowUI<LoadUpdateUI>($"资源初始化失败！");
 
                     LauncherMgr.ShowMessageBox(
                         $"资源初始化失败！点击确认重试 \n \n <color=#FF0000>原因{initializationOperation.Error}</color>",
-                        MessageShowType.TwoButton,
-                        LoadStyle.StyleEnum.Style_Retry
-                        , () => { Retry(procedureOwner); }, UnityEngine.Application.Quit);
+                        () => { Retry(procedureOwner); }, UnityEngine.Application.Quit);
                 }
             }
             catch (Exception e)
@@ -94,28 +92,27 @@ namespace Procedure
         private void OnInitPackageFailed(ProcedureOwner procedureOwner, string message)
         {
             // 打开启动UI。
-            LauncherMgr.Show(UIDefine.UILoadUpdate);
+            LauncherMgr.ShowUI<LoadUpdateUI>();
 
             Log.Error($"{message}");
 
             // 打开启动UI。
-            LauncherMgr.Show(UIDefine.UILoadUpdate, $"资源初始化失败！");
+            LauncherMgr.ShowUI<LoadUpdateUI>($"资源初始化失败！");
 
             if (message.Contains("PackageManifest_DefaultPackage.version Error : HTTP/1.1 404 Not Found"))
             {
                 message = "请检查StreamingAssets/package/DefaultPackage/PackageManifest_DefaultPackage.version是否存在";
             }
 
-            LauncherMgr.ShowMessageBox($"资源初始化失败！点击确认重试 \n \n <color=#FF0000>原因{message}</color>", MessageShowType.TwoButton,
-                LoadStyle.StyleEnum.Style_Retry
-                , () => { Retry(procedureOwner); },
+            LauncherMgr.ShowMessageBox($"资源初始化失败！点击确认重试 \n \n <color=#FF0000>原因{message}</color>",
+                () => { Retry(procedureOwner); },
                 Application.Quit);
         }
 
         private void Retry(ProcedureOwner procedureOwner)
         {
             // 打开启动UI。
-            LauncherMgr.Show(UIDefine.UILoadUpdate, $"重新初始化资源中...");
+            LauncherMgr.ShowUI<LoadUpdateUI>($"重新初始化资源中...");
 
             InitPackage(procedureOwner).Forget();
         }

@@ -18,7 +18,7 @@ namespace Procedure
             _procedureOwner = procedureOwner;
             Log.Info("清理未使用的缓存文件！");
 
-            LauncherMgr.Show(UIDefine.UILoadUpdate, $"清理未使用的缓存文件...");
+            LauncherMgr.ShowUI<LoadUpdateUI>($"清理未使用的缓存文件...");
 
             var operation = _resourceModule.ClearCacheFilesAsync();
             operation.Completed += Operation_Completed;
@@ -27,7 +27,7 @@ namespace Procedure
 
         private void Operation_Completed(YooAsset.AsyncOperationBase obj)
         {
-            LauncherMgr.Show(UIDefine.UILoadUpdate, $"清理完成 即将进入游戏...");
+            LauncherMgr.ShowUI<LoadUpdateUI>($"清理完成 即将进入游戏...");
 
             ChangeState<ProcedurePreload>(_procedureOwner);
         }

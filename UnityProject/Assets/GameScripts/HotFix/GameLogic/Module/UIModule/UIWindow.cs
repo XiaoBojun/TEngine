@@ -12,6 +12,8 @@ namespace GameLogic
     {
         #region Propreties
 
+        private SetUISafeFitHelper _setUISafeFitHelper;
+
         private System.Action<UIWindow> _prepareCallback;
 
         private bool _isCreate = false;
@@ -242,6 +244,59 @@ namespace GameLogic
             HideTimeToClose = hideTimeToClose;
         }
 
+        #region 刘海屏适配
+
+        /// <summary>
+        /// 移动设备屏幕适配
+        /// </summary>
+        /// <param name="fitRect">适配的RectTransform对象</param>
+        /// <param name="liuHaiFit">是否开启刘海屏顶部适配</param>
+        /// <param name="topSpacing">刘海屏顶部适配偏移高度</param>
+        /// <param name="bottomFit">是否开启刘海屏底部适配</param>
+        /// <param name="bottomSpacing">刘海屏底部适配偏移高度</param>
+        public void SetUIFit(RectTransform fitRect, bool liuHaiFit = true, float topSpacing = 0, bool bottomFit = true, float bottomSpacing = 0)
+        {
+            if (_setUISafeFitHelper == null)
+            {
+                _setUISafeFitHelper = new SetUISafeFitHelper(fitRect, liuHaiFit, topSpacing, bottomFit, bottomSpacing);
+            }
+            _setUISafeFitHelper?.SetUIFit();
+        }
+
+        /// <summary>
+        /// rectTransform不受m_curRect适配影响
+        /// </summary>
+        /// <param name="rect"></param>
+        public void SetUINotFit(RectTransform rect)
+        {
+            if (rect == null)
+            {
+                return;
+            }
+
+            _setUISafeFitHelper?.SetUINotFit(rect);
+        }
+
+        /// <summary>
+        /// 设置某一个节点不受指定RectTransform的影响
+        /// </summary>
+        /// <param name="rect">设置的RectTransform</param>
+        /// <param name="refRect">依赖的RectTransform</param>
+        public void SetUINotFit(RectTransform rect, RectTransform refRect)
+        {
+            if (rect == null || refRect == null)
+            {
+                return;
+            }
+            if (_setUISafeFitHelper == null)
+            {
+                _setUISafeFitHelper = new SetUISafeFitHelper();
+            }
+            _setUISafeFitHelper?.SetUINotFit(rect, refRect);
+        }
+
+        #endregion
+
         internal void TryInvoke(System.Action<UIWindow> prepareCallback, System.Object[] userDatas)
         {
             CancelHideToCloseTimer();
@@ -285,6 +340,7 @@ namespace GameLogic
             if (_isCreate == false)
             {
                 _isCreate = true;
+                Inject();
                 ScriptGenerator();
                 BindMemberProperty();
                 RegisterEvent();

@@ -44,7 +44,7 @@ namespace Procedure
 
             _loadedFlag.Clear();
 
-            LauncherMgr.Show(UIDefine.UILoadUpdate, Utility.Text.Format(LoadText.Instance.Label_Load_Load_Progress, 0));
+            LauncherMgr.ShowUI<LoadUpdateUI>(Utility.Text.Format(LoadText.Instance.Label_Load_Load_Progress, 0));
 
             GameEvent.Send("UILoadUpdate.RefreshVersion");
 
@@ -73,21 +73,21 @@ namespace Procedure
 
             if (_loadedFlag.Count != 0)
             {
-                LauncherMgr.Show(UIDefine.UILoadUpdate, Utility.Text.Format(LoadText.Instance.Label_Load_Load_Progress, (float)loadCount / totalCount * 100));
+                LauncherMgr.ShowUI<LoadUpdateUI>(Utility.Text.Format(LoadText.Instance.Label_Load_Load_Progress, (float)loadCount / totalCount * 100));
             }
             else
             {
-                LauncherMgr.UpdateUIProgress(_progress);
+                LauncherMgr.RefreshProgress(_progress);
 
                 string progressStr = $"{_progress * 100:f1}";
 
                 if (Math.Abs(_progress - 1f) < 0.001f)
                 {
-                    LauncherMgr.Show(UIDefine.UILoadUpdate, LoadText.Instance.Label_Load_Load_Complete);
+                    LauncherMgr.ShowUI<LoadUpdateUI>(LoadText.Instance.Label_Load_Load_Complete);
                 }
                 else
                 {
-                    LauncherMgr.Show(UIDefine.UILoadUpdate, Utility.Text.Format(LoadText.Instance.Label_Load_Load_Progress, progressStr));
+                    LauncherMgr.ShowUI<LoadUpdateUI>(Utility.Text.Format(LoadText.Instance.Label_Load_Load_Progress, progressStr));
                 }
             }
 

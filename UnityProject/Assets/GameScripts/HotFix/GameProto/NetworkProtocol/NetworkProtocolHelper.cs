@@ -9,6 +9,47 @@ namespace Fantasy
    public static class NetworkProtocolHelper
    {
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static async FTask<G2C_Login> C2G_Login(this Session session, C2G_Login C2G_Login_request)
+		{
+			return (G2C_Login)await session.Call(C2G_Login_request);
+		}
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static async FTask<G2C_Login> C2G_Login(this Session session, string acct, string pwd)
+		{
+			using var C2G_Login_request = Fantasy.C2G_Login.Create();
+			C2G_Login_request.Acct = acct;
+			C2G_Login_request.Pwd = pwd;
+			return (G2C_Login)await session.Call(C2G_Login_request);
+		}
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void C2G_Match(this Session session, C2G_Match C2G_Match_message)
+		{
+			session.Send(C2G_Match_message);
+		}
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void C2G_Match(this Session session, int roomID, int selfPosIndex, List<MatchPlayerData> playerArr)
+		{
+			using var C2G_Match_message = Fantasy.C2G_Match.Create();
+			C2G_Match_message.RoomID = roomID;
+			C2G_Match_message.selfPosIndex = selfPosIndex;
+			C2G_Match_message.playerArr = playerArr;
+			session.Send(C2G_Match_message);
+		}
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void G2C_Poker(this Session session, G2C_Poker G2C_Poker_message)
+		{
+			session.Send(G2C_Poker_message);
+		}
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void G2C_Poker(this Session session, int baseScore, int addTimes, List<Poker> pokerLst)
+		{
+			using var G2C_Poker_message = Fantasy.G2C_Poker.Create();
+			G2C_Poker_message.baseScore = baseScore;
+			G2C_Poker_message.addTimes = addTimes;
+			G2C_Poker_message.pokerLst = pokerLst;
+			session.Send(G2C_Poker_message);
+		}
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void C2G_TestMessage(this Session session, C2G_TestMessage C2G_TestMessage_message)
 		{
 			session.Send(C2G_TestMessage_message);

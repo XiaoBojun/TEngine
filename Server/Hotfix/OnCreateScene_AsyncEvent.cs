@@ -14,7 +14,7 @@ public class OnCreateScene_AsyncEvent : AsyncEventSystem<OnCreateScene>
         {
             case SceneType.Gate:
             {
-                //self.Scene.AddComponent<AccountComponent>();
+                self.Scene.AddComponent<GateComponent>();
                 break;
             }
         }

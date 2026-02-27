@@ -355,13 +355,11 @@ namespace Fantasy
         public void Dispose()
         {
             if (!IsPool()) return; 
-            Unit = default;
             MessageObjectPool<M2M_SendUnitRequest>.Return(this);
         }
         public uint OpCode() { return InnerOpcode.M2M_SendUnitRequest; } 
         [BsonIgnore]
         public M2M_SendUnitResponse ResponseType { get; set; }
-        public Unit Unit { get; set; }
     }
     public partial class M2M_SendUnitResponse : AMessage, IAddressResponse
     {

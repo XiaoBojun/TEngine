@@ -7,6 +7,143 @@ package Fantasy.Network.Message;
 // 使用方式:
 // 在message协议上方添加// Protocol+空格+协议名字
 // 例如:// Protocol ProtoBuf 或 // Protocol MemoryPack
+
+//登录
+message C2G_Login // IRequest,G2C_Login
+{
+	string Acct = 1;
+	string Pwd = 2;
+}
+message G2C_Login // IResponse
+{
+	PlayerData playerData = 1;
+	repeated ArenaRank arenaRankLst = 2;
+	repeated ScoreRank scoreRankLst = 3;
+}
+message PlayerData
+{
+	int32 id = 1;
+	string name = 2;
+	int32 lv = 3;
+	int32 exp = 4;
+	int32 coin = 5;
+	int32 diamond = 6;
+	int32 win = 7;
+	int32 lose = 8;
+	int32 winlast = 9;
+}
+message ArenaRank
+{
+	int32 rank = 1;
+	string name = 2;
+	int32 winCount = 3;
+	int32 winLength = 4;
+	int32 fight = 5;
+}
+message ScoreRank
+{
+	int32 rank = 1;
+	string name = 2;
+	int32 level = 3;
+	int32 coin = 4;
+}
+//匹配
+message C2G_Match //IMessage
+{
+	int32 RoomID = 1;
+	int32 selfPosIndex = 2;
+	repeated MatchPlayerData playerArr = 3;
+}
+message G2C_Poker //IMessage
+{
+	int32 baseScore = 1;
+	int32 addTimes = 2;
+	repeated Poker pokerLst = 3;
+}
+message Poker
+{
+	string mName = 1;
+	PokerType mType = 2;
+	PokerValue mValue = 3;
+}
+enum PokerType 
+{
+	None = 0,
+	Square = 1,
+	Club = 2,
+	Heart = 3,
+	Spade = 4
+}
+enum PokerValue 
+{
+	None = 0,
+	Three = 3,
+	Four = 4,
+	Five = 5,
+	Six = 6,
+	Seven = 7,
+	Eight = 8,
+	Nine = 9,
+	Ten = 10,
+	Jack = 11,
+	Queen = 12,
+	King = 13,
+	One = 14,
+	Two = 15,
+	SJoker = 16,
+	LJoker = 17
+}
+enum PokerLstType 
+{
+	None = 0,
+	Single = 1,//单个
+	Pair = 2,//一对
+
+	//三不带 444
+	ThreeWithZero = 3,
+	//三带一 444 5
+	ThreeWithOne = 4,
+	//三带一对 444 55
+	ThreeWithPair = 5,
+
+	//单顺 34567
+	StraightOne = 6,
+	//双顺 445566
+	StraightTwo = 7,
+	//三顺 4444555666
+	StraightThree = 8,
+
+	//飞机带小翅膀 666777 89
+	PlaneWithOne = 9,
+	//飞机带大翅膀 666777 8899
+	PlaneWithPair = 10,
+
+	//普通炸弹
+	NormalBoom = 11,
+	//王炸
+	BigBoom = 12
+}
+enum ErrorCode 
+{
+		None = 0,
+		AcctIsOnline = 1,
+		WrongPass = 2,
+		SrvDataError = 3,
+
+		OutIndexError = 4,
+		OutPokerError = 5,
+		UpdateDBError = 6,
+}
+
+message MatchPlayerData
+{
+	int32 id = 1;
+	string name = 2;
+	int32 coin = 3;
+	int32 posIndex = 4;
+	int32 iconIndex = 5;
+}
+
 /// 发送一个消息到Gate服务器
 message C2G_TestMessage // IMessage
 {

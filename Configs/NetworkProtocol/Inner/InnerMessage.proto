@@ -33,7 +33,7 @@ message Chat2G_CreateRouteResponse // IAddressResponse
 // Protocol Bson
 message M2M_SendUnitRequest // IAddressRequest,M2M_SendUnitResponse
 {
-  Unit Unit = 1;
+  //Unit Unit = 1;
 }
 // Protocol Bson
 message M2M_SendUnitResponse // IAddressResponse

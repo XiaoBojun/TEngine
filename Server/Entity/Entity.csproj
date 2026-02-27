@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Gate\Component\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Fantasy.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

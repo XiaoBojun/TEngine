@@ -11,19 +11,6 @@
         "NetworkProtocolClientDirectory": {
             "Value": "../../UnityProject/Assets/GameScripts/Hotfix/GameProto/NetworkProtocol/",
             "Comment": "ProtoBuf生成到客户端的文件夹位置"
-        },
-        "Serializes": {
-            "Value": [
-//                {
-//                    "KeyIndex": 0,
-//                    "NameSpace" : "MemoryPack",
-//                    "SerializeName": "MemoryPack",
-//                    "Attribute": "\t[MemoryPackable]",
-//                    "Ignore": "\t\t[MemoryPackIgnore]",
-//                    "Member": "MemoryPackOrder"
-//                }
-            ],
-            "Comment": "自定义序列化器"
         }
     }
 }

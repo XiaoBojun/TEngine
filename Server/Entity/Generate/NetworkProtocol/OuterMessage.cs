@@ -23,6 +23,463 @@ using Fantasy.Serialize;
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 namespace Fantasy
 {
+    [Serializable]
+    [ProtoContract]
+    public partial class C2G_Login : AMessage, IRequest
+    {
+        public static C2G_Login Create(bool autoReturn = true)
+        {
+            var c2G_Login = MessageObjectPool<C2G_Login>.Rent();
+            c2G_Login.AutoReturn = autoReturn;
+            
+            if (!autoReturn)
+            {
+                c2G_Login.SetIsPool(false);
+            }
+            
+            return c2G_Login;
+        }
+        
+        public void Return()
+        {
+            if (!AutoReturn)
+            {
+                SetIsPool(true);
+                AutoReturn = true;
+            }
+            else if (!IsPool())
+            {
+                return;
+            }
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            if (!IsPool()) return; 
+            Acct = default;
+            Pwd = default;
+            MessageObjectPool<C2G_Login>.Return(this);
+        }
+        public uint OpCode() { return OuterOpcode.C2G_Login; } 
+        [ProtoIgnore]
+        public G2C_Login ResponseType { get; set; }
+        [ProtoMember(1)]
+        public string Acct { get; set; }
+        [ProtoMember(2)]
+        public string Pwd { get; set; }
+    }
+    [Serializable]
+    [ProtoContract]
+    public partial class G2C_Login : AMessage, IResponse
+    {
+        public static G2C_Login Create(bool autoReturn = true)
+        {
+            var g2C_Login = MessageObjectPool<G2C_Login>.Rent();
+            g2C_Login.AutoReturn = autoReturn;
+            
+            if (!autoReturn)
+            {
+                g2C_Login.SetIsPool(false);
+            }
+            
+            return g2C_Login;
+        }
+        
+        public void Return()
+        {
+            if (!AutoReturn)
+            {
+                SetIsPool(true);
+                AutoReturn = true;
+            }
+            else if (!IsPool())
+            {
+                return;
+            }
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            if (!IsPool()) return; 
+            ErrorCode = 0;
+            if (playerData != null)
+            {
+                playerData.Dispose();
+                playerData = null;
+            }
+            arenaRankLst.Clear();
+            scoreRankLst.Clear();
+            MessageObjectPool<G2C_Login>.Return(this);
+        }
+        public uint OpCode() { return OuterOpcode.G2C_Login; } 
+        [ProtoMember(1)]
+        public uint ErrorCode { get; set; }
+        [ProtoMember(2)]
+        public PlayerData playerData { get; set; }
+        [ProtoMember(3)]
+        public List<ArenaRank> arenaRankLst { get; set; } = new List<ArenaRank>();
+        [ProtoMember(4)]
+        public List<ScoreRank> scoreRankLst { get; set; } = new List<ScoreRank>();
+    }
+    [Serializable]
+    [ProtoContract]
+    public partial class PlayerData : AMessage, IDisposable
+    {
+        public static PlayerData Create(bool autoReturn = true)
+        {
+            var playerData = MessageObjectPool<PlayerData>.Rent();
+            playerData.AutoReturn = autoReturn;
+            
+            if (!autoReturn)
+            {
+                playerData.SetIsPool(false);
+            }
+            
+            return playerData;
+        }
+        
+        public void Return()
+        {
+            if (!AutoReturn)
+            {
+                SetIsPool(true);
+                AutoReturn = true;
+            }
+            else if (!IsPool())
+            {
+                return;
+            }
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            if (!IsPool()) return; 
+            id = default;
+            name = default;
+            lv = default;
+            exp = default;
+            coin = default;
+            diamond = default;
+            win = default;
+            lose = default;
+            winlast = default;
+            MessageObjectPool<PlayerData>.Return(this);
+        }
+        [ProtoMember(1)]
+        public int id { get; set; }
+        [ProtoMember(2)]
+        public string name { get; set; }
+        [ProtoMember(3)]
+        public int lv { get; set; }
+        [ProtoMember(4)]
+        public int exp { get; set; }
+        [ProtoMember(5)]
+        public int coin { get; set; }
+        [ProtoMember(6)]
+        public int diamond { get; set; }
+        [ProtoMember(7)]
+        public int win { get; set; }
+        [ProtoMember(8)]
+        public int lose { get; set; }
+        [ProtoMember(9)]
+        public int winlast { get; set; }
+    }
+    [Serializable]
+    [ProtoContract]
+    public partial class ArenaRank : AMessage, IDisposable
+    {
+        public static ArenaRank Create(bool autoReturn = true)
+        {
+            var arenaRank = MessageObjectPool<ArenaRank>.Rent();
+            arenaRank.AutoReturn = autoReturn;
+            
+            if (!autoReturn)
+            {
+                arenaRank.SetIsPool(false);
+            }
+            
+            return arenaRank;
+        }
+        
+        public void Return()
+        {
+            if (!AutoReturn)
+            {
+                SetIsPool(true);
+                AutoReturn = true;
+            }
+            else if (!IsPool())
+            {
+                return;
+            }
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            if (!IsPool()) return; 
+            rank = default;
+            name = default;
+            winCount = default;
+            winLength = default;
+            fight = default;
+            MessageObjectPool<ArenaRank>.Return(this);
+        }
+        [ProtoMember(1)]
+        public int rank { get; set; }
+        [ProtoMember(2)]
+        public string name { get; set; }
+        [ProtoMember(3)]
+        public int winCount { get; set; }
+        [ProtoMember(4)]
+        public int winLength { get; set; }
+        [ProtoMember(5)]
+        public int fight { get; set; }
+    }
+    [Serializable]
+    [ProtoContract]
+    public partial class ScoreRank : AMessage, IDisposable
+    {
+        public static ScoreRank Create(bool autoReturn = true)
+        {
+            var scoreRank = MessageObjectPool<ScoreRank>.Rent();
+            scoreRank.AutoReturn = autoReturn;
+            
+            if (!autoReturn)
+            {
+                scoreRank.SetIsPool(false);
+            }
+            
+            return scoreRank;
+        }
+        
+        public void Return()
+        {
+            if (!AutoReturn)
+            {
+                SetIsPool(true);
+                AutoReturn = true;
+            }
+            else if (!IsPool())
+            {
+                return;
+            }
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            if (!IsPool()) return; 
+            rank = default;
+            name = default;
+            level = default;
+            coin = default;
+            MessageObjectPool<ScoreRank>.Return(this);
+        }
+        [ProtoMember(1)]
+        public int rank { get; set; }
+        [ProtoMember(2)]
+        public string name { get; set; }
+        [ProtoMember(3)]
+        public int level { get; set; }
+        [ProtoMember(4)]
+        public int coin { get; set; }
+    }
+    [Serializable]
+    [ProtoContract]
+    public partial class C2G_Match : AMessage, IMessage
+    {
+        public static C2G_Match Create(bool autoReturn = true)
+        {
+            var c2G_Match = MessageObjectPool<C2G_Match>.Rent();
+            c2G_Match.AutoReturn = autoReturn;
+            
+            if (!autoReturn)
+            {
+                c2G_Match.SetIsPool(false);
+            }
+            
+            return c2G_Match;
+        }
+        
+        public void Return()
+        {
+            if (!AutoReturn)
+            {
+                SetIsPool(true);
+                AutoReturn = true;
+            }
+            else if (!IsPool())
+            {
+                return;
+            }
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            if (!IsPool()) return; 
+            RoomID = default;
+            selfPosIndex = default;
+            playerArr.Clear();
+            MessageObjectPool<C2G_Match>.Return(this);
+        }
+        public uint OpCode() { return OuterOpcode.C2G_Match; } 
+        [ProtoMember(1)]
+        public int RoomID { get; set; }
+        [ProtoMember(2)]
+        public int selfPosIndex { get; set; }
+        [ProtoMember(3)]
+        public List<MatchPlayerData> playerArr { get; set; } = new List<MatchPlayerData>();
+    }
+    [Serializable]
+    [ProtoContract]
+    public partial class G2C_Poker : AMessage, IMessage
+    {
+        public static G2C_Poker Create(bool autoReturn = true)
+        {
+            var g2C_Poker = MessageObjectPool<G2C_Poker>.Rent();
+            g2C_Poker.AutoReturn = autoReturn;
+            
+            if (!autoReturn)
+            {
+                g2C_Poker.SetIsPool(false);
+            }
+            
+            return g2C_Poker;
+        }
+        
+        public void Return()
+        {
+            if (!AutoReturn)
+            {
+                SetIsPool(true);
+                AutoReturn = true;
+            }
+            else if (!IsPool())
+            {
+                return;
+            }
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            if (!IsPool()) return; 
+            baseScore = default;
+            addTimes = default;
+            pokerLst.Clear();
+            MessageObjectPool<G2C_Poker>.Return(this);
+        }
+        public uint OpCode() { return OuterOpcode.G2C_Poker; } 
+        [ProtoMember(1)]
+        public int baseScore { get; set; }
+        [ProtoMember(2)]
+        public int addTimes { get; set; }
+        [ProtoMember(3)]
+        public List<Poker> pokerLst { get; set; } = new List<Poker>();
+    }
+    [Serializable]
+    [ProtoContract]
+    public partial class Poker : AMessage, IDisposable
+    {
+        public static Poker Create(bool autoReturn = true)
+        {
+            var poker = MessageObjectPool<Poker>.Rent();
+            poker.AutoReturn = autoReturn;
+            
+            if (!autoReturn)
+            {
+                poker.SetIsPool(false);
+            }
+            
+            return poker;
+        }
+        
+        public void Return()
+        {
+            if (!AutoReturn)
+            {
+                SetIsPool(true);
+                AutoReturn = true;
+            }
+            else if (!IsPool())
+            {
+                return;
+            }
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            if (!IsPool()) return; 
+            mName = default;
+            mType = default;
+            mValue = default;
+            MessageObjectPool<Poker>.Return(this);
+        }
+        [ProtoMember(1)]
+        public string mName { get; set; }
+        [ProtoMember(2)]
+        public PokerType mType { get; set; }
+        [ProtoMember(3)]
+        public PokerValue mValue { get; set; }
+    }
+    [Serializable]
+    [ProtoContract]
+    public partial class MatchPlayerData : AMessage, IDisposable
+    {
+        public static MatchPlayerData Create(bool autoReturn = true)
+        {
+            var matchPlayerData = MessageObjectPool<MatchPlayerData>.Rent();
+            matchPlayerData.AutoReturn = autoReturn;
+            
+            if (!autoReturn)
+            {
+                matchPlayerData.SetIsPool(false);
+            }
+            
+            return matchPlayerData;
+        }
+        
+        public void Return()
+        {
+            if (!AutoReturn)
+            {
+                SetIsPool(true);
+                AutoReturn = true;
+            }
+            else if (!IsPool())
+            {
+                return;
+            }
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            if (!IsPool()) return; 
+            id = default;
+            name = default;
+            coin = default;
+            posIndex = default;
+            iconIndex = default;
+            MessageObjectPool<MatchPlayerData>.Return(this);
+        }
+        [ProtoMember(1)]
+        public int id { get; set; }
+        [ProtoMember(2)]
+        public string name { get; set; }
+        [ProtoMember(3)]
+        public int coin { get; set; }
+        [ProtoMember(4)]
+        public int posIndex { get; set; }
+        [ProtoMember(5)]
+        public int iconIndex { get; set; }
+    }
     /// <summary>
     /// 发送一个消息到Gate服务器
     /// </summary>
